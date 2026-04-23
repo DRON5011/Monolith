@@ -624,15 +624,6 @@
     stealGroup: MedicalTechFabCircuitboard
   - type: PirateBountyItem # Mono
     id: Techfab
-  # Forge change
-  - type: MaterialStorage
-    whitelist:
-    tags:
-      - Sheet
-      - RawMaterial
-      - Ingot
-  # End Forge change
-
 
 - type: entity
   parent: BaseLathe
