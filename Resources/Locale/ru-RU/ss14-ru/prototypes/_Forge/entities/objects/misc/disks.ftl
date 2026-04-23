@@ -16,3 +16,6 @@ ent-DisciplinesDiskVG = диск технологий VG
 ent-DisciplinesDiskUllman = диск технологий U.I.
     .desc = Диск для сервера РНД, содержащий в себе технологии Ullman I.
     .suffix = DoNotMap
+ent-DisciplinesDiskHME = диск технологий HME
+    .desc = Диск для сервера РНД, содержащий в себе технологии Harmony Medical Enterprises.
+    .suffix = DoNotMap

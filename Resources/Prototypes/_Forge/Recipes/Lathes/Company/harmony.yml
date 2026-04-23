@@ -1,0 +1,166 @@
+- type: latheRecipe
+  id: RegenerativeMesh1
+  result: OintmentAdvanced1
+  completetime: 2
+  materials:
+    Plastic: 50
+    Steel: 10
+    Durathread: 5
+    Plasma: 30
+
+- type: latheRecipe
+  id: MedicatedSuture1
+  result: BrutepackAdvanced1
+  completetime: 2
+  materials:
+    Plastic: 50
+    Steel: 10
+    Durathread: 30
+    Plasma: 5
+
+- type: latheRecipe
+  id: Bloodpack1
+  result: Bloodpack1
+  completetime: 2
+  materials:
+    Plastic: 30
+    Steel: 5
+    Cloth: 10
+    Plasma: 10
+    Biomass: 1
+
+- type: latheRecipe
+  id: HMEAdvancedMedkitCombat
+  result: HMEAdvancedMedkitCombat
+  completetime: 5
+  materials:
+    Plastic: 750
+    Steel: 100
+    Plasteel: 150
+
+- type: latheRecipe
+  id: HMESynthFleshPack1
+  result: HMESynthFleshPack1
+  completetime: 3
+  materials:
+    Plastic: 75
+    Steel: 15
+    Durathread: 30
+    Cloth: 20
+    Plasma: 60
+
+- type: latheRecipe
+  id: HMEElasticGaugePack1
+  result: HMEElasticGaugePack1
+  completetime: 3
+  materials:
+    Plastic: 90
+    Steel: 10
+    Durathread: 50
+    Cloth: 30
+    Plasma: 30
+
+- type: latheRecipe
+  id: HMESynthBloodpack1
+  result: HMESynthBloodpack1
+  completetime: 3
+  materials:
+    Plastic: 60
+    Steel: 15
+    Durathread: 30
+    Cloth: 20
+    Plasma: 90
+    Biomass: 2
+
+- type: latheRecipe
+  id: HMEAdvancedCompactDefibrillator
+  result: HMEAdvancedCompactDefibrillator
+  completetime: 12
+  materials:
+    Plastic: 1250
+    Steel: 2000
+    Glass: 150
+    Plasma: 1500
+    Uranium: 1000
+    Diamond: 100
+
+- type: latheRecipe
+  id: HMEBasicHypo
+  result: HMEBasicHypo
+  completetime: 10
+  materials:
+    Plastic: 750
+    Steel: 1500
+    Silver: 300
+    Plasma: 750
+    Plastitanium: 300
+    Diamond: 50
+
+- type: latheRecipe
+  id: HMEStandartHypo
+  result: HMEStandartHypo
+  completetime: 15
+  materials:
+    Plastic: 1500
+    Steel: 3000
+    Silver: 500
+    Plasma: 1250
+    Durathread: 750
+    Plastitanium: 1000
+    Diamond: 150
+
+- type: latheRecipe
+  id: HMELightModsuit
+  result: ClothingModsuitHMELightSuit
+  completetime: 15
+  materialDiscountScale: 0
+  materials:
+    Plastic: 1000
+    Steel: 3000
+    Plasteel: 1000
+    Glass: 800
+    Silver: 500
+    Gold: 500
+    Uranium: 1500
+    Durathread: 3000
+    Plastitanium: 1500
+    Diamond: 200
+
+- type: latheRecipe
+  id: HMEHeavyModsuit
+  result: ClothingModsuitHMEHeavySuit
+  completetime: 20
+  materialDiscountScale: 0
+  materials:
+    Plastic: 1250
+    Steel: 4000
+    Glass: 500
+    Silver: 500
+    Gold: 500
+    Uranium: 1250
+    Durathread: 4500
+    Plastitanium: 4000
+    Diamond: 300
+    UraniumFissile: 200
+    Plasteel: 3000
+
+- type: latheRecipe
+  id: HMEJumpsuit
+  result: ClothingUniformJumpsuitHME
+  completetime: 5
+  materials:
+    Cloth: 500
+
+- type: latheRecipe
+  id: HMEJumpskirt
+  result: ClothingUniformJumpskirtHME
+  completetime: 5
+  materials:
+    Cloth: 500
+
+- type: latheRecipe
+  id: HMEBeret
+  result: ClothingHeadHatBeretHME
+  completetime: 5
+  materials:
+    Cloth: 300

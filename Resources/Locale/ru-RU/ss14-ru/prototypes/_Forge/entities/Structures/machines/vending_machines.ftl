@@ -18,3 +18,5 @@ ent-VendingMachineCompanyViper = вендомат «Жадность»
 ent-VendingMachineCompanyUSSP = { ent-VendingMachineUSSP }
     .desc = { ent-VendingMachineUSSP.desc }
     .suffix = Централ
+ent-VendingMachineCompanyHME = автомат снабжения HME
+    .desc = Продаёт различные вещи компании HME.

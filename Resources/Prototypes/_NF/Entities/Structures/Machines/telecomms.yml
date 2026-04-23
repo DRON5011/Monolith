@@ -25,6 +25,7 @@
       - EncryptionKeyUllmanIndustries
       - EncryptionKeyBlackhawk
       - EncryptionKeyTechnicLogistic
+      - EncryptionKeyHarmony
 
 - type: entity
   parent: TelecomServer
