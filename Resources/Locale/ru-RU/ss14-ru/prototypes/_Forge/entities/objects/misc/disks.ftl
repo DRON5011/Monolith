@@ -19,3 +19,6 @@ ent-DisciplinesDiskUllman = диск технологий U.I.
 ent-DisciplinesDiskHME = диск технологий HME
     .desc = Диск для сервера РНД, содержащий в себе технологии Harmony Medical Enterprises.
     .suffix = DoNotMap
+ent-DisciplinesDiskNanotrasen = диск технологий НТ
+    .desc = Диск для сервера РНД, содержащий в себе технологии НТ.
+    .suffix = DoNotMap

@@ -169,6 +169,7 @@
     - Ullman # Forge-change
     - ViperGroup # Forge-change
     - HME # Forge-change
+    - Nanotrasen # Forge-change
 
 - type: entity
   parent: ResearchAndDevelopmentServer
