@@ -1,33 +1,33 @@
 - type: latheRecipe
   id: RegenerativeMesh1
-  result: OintmentAdvanced1
-  completetime: 2
+  result: RegenerativeMesh
+  completetime: 10
   materials:
-    Plastic: 50
-    Steel: 10
-    Durathread: 5
-    Plasma: 30
+    Plastic: 750
+    Steel: 150
+    Durathread: 75
+    Plasma: 450
 
 - type: latheRecipe
   id: MedicatedSuture1
-  result: BrutepackAdvanced1
-  completetime: 2
+  result: MedicatedSuture
+  completetime: 10
   materials:
-    Plastic: 50
-    Steel: 10
-    Durathread: 30
-    Plasma: 5
+    Plastic: 750
+    Steel: 150
+    Durathread: 450
+    Plasma: 75
 
 - type: latheRecipe
   id: Bloodpack1
-  result: Bloodpack1
-  completetime: 2
+  result: Bloodpack
+  completetime: 10
   materials:
-    Plastic: 30
-    Steel: 5
-    Cloth: 10
-    Plasma: 10
-    Biomass: 1
+    Plastic: 450
+    Steel: 75
+    Cloth: 150
+    Plasma: 150
+    Biomass: 15
 
 - type: latheRecipe
   id: HMEAdvancedMedkitCombat
@@ -40,37 +40,37 @@
 
 - type: latheRecipe
   id: HMESynthFleshPack1
-  result: HMESynthFleshPack1
-  completetime: 3
+  result: HMESynthFleshPack
+  completetime: 20
   materials:
-    Plastic: 75
-    Steel: 15
-    Durathread: 30
-    Cloth: 20
-    Plasma: 60
+    Plastic: 1125
+    Steel: 225
+    Durathread: 450
+    Cloth: 300
+    Plasma: 900
 
 - type: latheRecipe
   id: HMEElasticGaugePack1
-  result: HMEElasticGaugePack1
-  completetime: 3
+  result: HMEElasticGaugePack
+  completetime: 20
   materials:
-    Plastic: 90
-    Steel: 10
-    Durathread: 50
-    Cloth: 30
-    Plasma: 30
+    Plastic: 1350
+    Steel: 150
+    Durathread: 750
+    Cloth: 450
+    Plasma: 450
 
 - type: latheRecipe
   id: HMESynthBloodpack1
-  result: HMESynthBloodpack1
-  completetime: 3
+  result: HMESynthBloodpack
+  completetime: 20
   materials:
-    Plastic: 60
-    Steel: 15
-    Durathread: 30
-    Cloth: 20
-    Plasma: 90
-    Biomass: 2
+    Plastic: 900
+    Steel: 225
+    Durathread: 450
+    Cloth: 300
+    Plasma: 1350
+    Biomass: 30
 
 - type: latheRecipe
   id: HMEAdvancedCompactDefibrillator
