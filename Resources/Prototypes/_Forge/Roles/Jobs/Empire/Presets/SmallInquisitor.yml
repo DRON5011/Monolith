@@ -8,6 +8,12 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 21600 # 6 hrs
+    - !type:SpeciesRequirement
+      species:
+        - Human
+    - !type:SexRequirement
+      sex:
+      - Male
   setPreference: false
   overrideConsoleVisibility: true
   startingGear: EmpireSmallInquisitorGear
@@ -26,6 +32,8 @@
     - type: NpcFactionMember
       factions:
       - Empire
+  - !type:AddImplantSpecial
+    implants: [ ImplantGuard , EmpireTrackingImplant]
 
 - type: startingGear
   id: EmpireSmallInquisitorGear
