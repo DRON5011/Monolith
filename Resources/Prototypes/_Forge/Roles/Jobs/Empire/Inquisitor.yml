@@ -35,6 +35,7 @@
   setPreference: true
   access:
   - EmpireInqusitor
+  - EmpireSmallInq
   accessGroups:
   - CommandEmpireAccess
   special:
