@@ -8,6 +8,14 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 21600 # 6 hrs
+    - !type:SpeciesRequirement
+      species:
+        - Human
+        - Dwarf
+    - !type:SexRequirement
+      sex:
+      - Male
+      - Female
   setPreference: false
   overrideConsoleVisibility: true
   startingGear: EmpireTechnicanGear
@@ -25,6 +33,8 @@
     - type: NpcFactionMember
       factions:
       - Empire
+  - !type:AddImplantSpecial
+    implants: [ ImplantGuard , EmpireTrackingImplant]
 
 - type: startingGear
   id: EmpireTechnicanGear

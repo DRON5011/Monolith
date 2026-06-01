@@ -3,11 +3,17 @@
   name: forge-job-name-smallinq
   description: forge-job-desc-smallinq
   supervisors: job-supervisors-inquisitor
-  playTimeTracker: JobIconEmpireSmallInq
+  playTimeTracker: JobEmpireSmallInquisitor
   icon: JobIconEmpireSmallInq
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 21600 # 6 hrs
+    - !type:SpeciesRequirement
+      species:
+        - Human
+    - !type:SexRequirement
+      sex:
+      - Male
   setPreference: false
   overrideConsoleVisibility: true
   startingGear: EmpireSmallInquisitorGear
@@ -27,6 +33,8 @@
     - type: NpcFactionMember
       factions:
       - Empire
+  - !type:AddImplantSpecial
+    implants: [ ImplantGuard , EmpireTrackingImplant]
 
 - type: startingGear
   id: EmpireSmallInquisitorGear

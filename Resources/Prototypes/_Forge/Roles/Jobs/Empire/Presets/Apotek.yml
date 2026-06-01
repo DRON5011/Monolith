@@ -8,6 +8,14 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 21600 # 6 hrs
+    - !type:SpeciesRequirement
+      species:
+        - Human
+        - Dwarf
+    - !type:SexRequirement
+      sex:
+      - Male
+      - Female
   setPreference: false
   overrideConsoleVisibility: true
   startingGear: EmpireApotekGear
@@ -19,13 +27,14 @@
   assignedNationality: Imperial
   accessGroups:
   - GeneralEmpireAccess
-  - Medical
   special:
   - !type:AddComponentSpecial
     components:
     - type: NpcFactionMember
       factions:
       - Empire
+  - !type:AddImplantSpecial
+    implants: [ ImplantGuard , EmpireTrackingImplant]
 
 - type: startingGear
   id: EmpireApotekGear
