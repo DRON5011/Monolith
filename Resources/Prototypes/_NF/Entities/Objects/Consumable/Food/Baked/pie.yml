@@ -26,8 +26,8 @@
           Quantity: 5
         - ReagentId: Flavorol
           Quantity: 11
-        - ReagentId: Lactozit
-          Quantity: 1.5
+        - ReagentId: Lactozit # Forge-change
+          Quantity: 1.5       # Forge-change
   # Forge-change-end
   - type: SliceableFood
     slice: FoodTartPearCheeseSlice
@@ -53,8 +53,7 @@
     - state: pearandcheese-slice
     - state: alpha-slice-filling
       color: "#bf6000"
-  # Forge-change-start
-  - type: SolutionContainerManager
+  # Forge-change-start- type: SolutionContainerManager
     solutions:
       food:
         maxVol: 8
@@ -65,8 +64,8 @@
           Quantity: 1
         - ReagentId: Flavorol
           Quantity: 2
-        - ReagentId: Lactozit
-          Quantity: 0.375
+        - ReagentId: Lactozit # Forge-change
+          Quantity: 0.375     # Forge-change
   # Forge-change-end
   - type: Tag
     tags:
