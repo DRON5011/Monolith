@@ -1,0 +1,16 @@
+- type: latheRecipe
+  id: UllmanClothingModsuit
+  result: ClothingModsuitRoguePowerCell
+  completetime: 20
+  materialDiscountScale: 0
+  materials:
+    Plastic: 1500
+    Steel: 5000
+    Glass: 1250
+    Silver: 1500
+    Gold: 1500
+    UraniumDepleted: 750
+    Durathread: 2000
+    Diamond: 200
+    UraniumFissile: 100
+    Plasteel: 2000

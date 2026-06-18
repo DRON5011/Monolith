@@ -207,6 +207,7 @@
   ## LPC
   - BalorDroneVoucherMerc
 #Mono end
+  - UllmanClothingModsuit # Forge-change
 
 - type: latheRecipePack
   id: NFMercenaryTechfabDeprecatedEmag

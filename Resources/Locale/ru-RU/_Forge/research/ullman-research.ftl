@@ -1,0 +1,1 @@
+research-technology-ullman-modsuit-advanced = U.I. модульный экзокостюм

@@ -1,0 +1,12 @@
+- type: technology
+  id: UllmanModsuitAdvanced
+  name: research-technology-ullman-modsuit-advanced
+  entityIcon: ClothingModsuitRogue
+  discipline: Ullman
+  tier: 3
+  cost: 80000
+  recipeUnlocks:
+  - UllmanClothingModsuit
+  technologyPrerequisites:
+  - UllmanHardsuitHiEnd
+  position: 16, 9
