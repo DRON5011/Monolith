@@ -91,6 +91,26 @@
   parent: BaseUllmanUniform
   result: ClothingNeckHeavyUllimanOvercoat
 
+- type: latheRecipe
+  id: UllmanNeckMantleUI
+  parent: BaseUllmanUniform
+  result: ClothingNeckMantleUI
+
+- type: latheRecipe
+  id: UllmanUniformShirtUI
+  parent: BaseUllmanUniform
+  result: ClothingUniformShirtUI
+
+- type: latheRecipe
+  id: UllmanHeadHatCapUI
+  parent: BaseUllmanUniform
+  result: ClothingHeadHatCapUI
+
+- type: latheRecipe
+  id: UllmanHeadHatBeretUI
+  parent: BaseUllmanUniform
+  result: ClothingHeadHatBeretUI
+
 # Ullman Industries Weapons
 - type: latheRecipe
   id: UllmanSniperRifle

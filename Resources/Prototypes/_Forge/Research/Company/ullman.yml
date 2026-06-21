@@ -26,6 +26,10 @@
   - UllmanNeckPonchoUI
   - UllmanNeckOvercoatUI
   - UllmanNeckHeavyOvercoatUI
+  - UllmanNeckMantleUI
+  - UllmanUniformShirtUI
+  - UllmanHeadHatCapUI
+  - UllmanHeadHatBeretUI
   technologyPrerequisites:
   - UniversalMaterialResearchT1
   position: 16, 0
