@@ -118,8 +118,10 @@
   completetime: 10
   materials:
     Steel: 3000
-    Glass: 750
-    Plasteel: 2000
+    Glass: 1500
+    Plasteel: 4000
+    Plastitanium: 3000
+    Diamond: 100
 
 - type: latheRecipe
   id: UllmanMagazine127x85mm
