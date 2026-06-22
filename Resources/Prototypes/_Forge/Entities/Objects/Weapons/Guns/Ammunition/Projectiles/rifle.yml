@@ -26,7 +26,7 @@
     damage: # Corvax-Forge-change
       types:
         Piercing: 70
-        Structural: 150
+        Structural: 100
     armorPenetration: 0.5 # Forge-Change
     penetrationThreshold: 360
     penetrationDamageTypeRequirement:
