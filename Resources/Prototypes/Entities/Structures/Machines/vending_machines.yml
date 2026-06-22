@@ -119,6 +119,7 @@
     hintText: dead-drop-hint-vendor
   - type: VendingMachine
     pack: EmptyVendingMachineInventory # Mandatory, use empty inventory
+    requiresCash: true # Forge-change
     taxAccounts:
       Frontier: 0.25
       Nfsd: 0.15
