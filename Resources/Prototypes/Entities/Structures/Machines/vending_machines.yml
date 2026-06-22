@@ -895,6 +895,7 @@
   components:
   - type: VendingMachine
     pack: NanoMedPlusInventory
+    requiresCash: true # Forge-change
     offState: off
     brokenState: broken
     normalState: normal-unshaded
@@ -1331,6 +1332,7 @@
   components:
   - type: VendingMachine
     pack: YouToolInventory
+    requiresCash: true # Forge-change
     offState: off
     brokenState: broken
     normalState: normal-unshaded
