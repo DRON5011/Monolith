@@ -12,3 +12,5 @@ ent-ClothingUniformJumpsuitUI = комбинезон U.I.
     .desc = Удобная водолазка Ульман индузтриз. Обычно идёт с боевым скафандром, но вам хватит и этого.
 ent-ClothingUniformShirtUI = футболка U.I.
     .desc = Удобная дышащая футболка с принтом корпорации Ullman Industries в комплекте с тактическими штанами. Обычно к ней прилагается умный пистолет, но вам хватит и этого.
+ent-ClothingUniformJumpsuitViperGroupTankTop = безрукавка Viper Group
+    .desc = Безрукавка в цветах Viper Group. Это то, что нужно для тяжелого физического труда.
