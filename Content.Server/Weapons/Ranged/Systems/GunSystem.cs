@@ -2,7 +2,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Server._Mono.FireControl;
 using Content.Server.Cargo.Systems;
-using Content.Server.Power.EntitySystems;
+// using Content.Server.Power.EntitySystems; // Forge-change
 using Content.Server.Weapons.Ranged.Components;
 using Content.Shared._Mono;
 using Content.Shared._RMC14.Weapons.Ranged.Prediction;
@@ -236,13 +236,6 @@ public sealed partial class GunSystem : SharedGunSystem
     private void ShootOrThrow(EntityUid uid, Vector2 mapDirection, Vector2 gunVelocity, GunComponent gun, EntityUid gunUid, EntityUid? user,
                               float offset = 0f) // Mono - add offset
     {
-        if (gun.Target is { } target && !TerminatingOrDeleted(target))
-        {
-            var targeted = EnsureComp<TargetedProjectileComponent>(uid);
-            targeted.Target = target;
-            Dirty(uid, targeted);
-        }
-
         // Do a throw
         if (!TryComp(uid, out ProjectileComponent? projectileComp))
         {
@@ -252,6 +245,20 @@ public sealed partial class GunSystem : SharedGunSystem
             return;
         }
 
+        //Forge-Change-start
+        projectileComp.Damage *= gun.DamageModifier;
+
+        if (TryFireSimulatedProjectile(uid, mapDirection, gunVelocity, gun, gunUid, user, offset))
+            return;
+
+        if (gun.Target is { } target && !TerminatingOrDeleted(target))
+        {
+            var targeted = EnsureComp<TargetedProjectileComponent>(uid);
+            targeted.Target = target;
+            Dirty(uid, targeted);
+        }
+        //Forge-Change-end
+
         if (GunPrediction && user != null && TryComp<ActorComponent>(user, out var actor))
         {
             var predicted = EnsureComp<PredictedProjectileServerComponent>(uid);
@@ -260,7 +267,6 @@ public sealed partial class GunSystem : SharedGunSystem
             predicted.ClientEnt = user;
         }
 
-        projectileComp.Damage *= gun.DamageModifier;
         ShootProjectile(uid, mapDirection, gunVelocity, gunUid, user, gun.ProjectileSpeedModified, offset); // Mono - add offset
         if (HasComp<FireControllableComponent>(gunUid))
         {
