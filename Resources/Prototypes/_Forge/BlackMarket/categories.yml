@@ -1,0 +1,15 @@
+- type: blackMarketCategory
+  id: Weapons
+  name: black-market-category-weapons
+  contractPool: BlackMarketPoolWeapons
+  passiveRefreshDelay: 600
+  purchasedRefreshDelay: 180
+  recentHistorySize: 2
+
+- type: blackMarketCategory
+  id: Technology
+  name: black-market-category-technology
+  contractPool: BlackMarketPoolTechnology
+  passiveRefreshDelay: 900
+  purchasedRefreshDelay: 240
+  recentHistorySize: 2

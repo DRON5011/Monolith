@@ -1,0 +1,85 @@
+- type: blackMarketContract
+  id: BMContractRevolver
+  category: Weapons
+  price: 12000
+  name: black-market-contract-revolver
+  description: black-market-contract-revolver-desc
+  icon: WeaponRevolverArgenti
+  purchaseLimit: 3
+  dynamicPrice: true
+  dynamicPriceIncreasePercent: 0.12
+  dynamicPriceMax: 22000
+  contents:
+  - proto: WeaponRevolverArgenti
+    amount: 1
+
+- type: blackMarketContract
+  id: BMContractEnergyGun
+  category: Weapons
+  price: 18000
+  name: black-market-contract-energy-gun
+  description: black-market-contract-energy-gun-desc
+  icon: WeaponEnergyGunExpedition
+  purchaseLimit: 2
+  dynamicPrice: true
+  dynamicPriceIncreasePercent: 0.15
+  dynamicPriceMax: 30000
+  contents:
+  - proto: WeaponEnergyGunExpedition
+    amount: 1
+
+- type: blackMarketContract
+  id: BMContractShotgun
+  category: Weapons
+  price: 15000
+  name: black-market-contract-shotgun
+  description: black-market-contract-shotgun-desc
+  icon: WeaponShotgunKammerer
+  purchaseLimit: 2
+  dynamicPrice: false
+  contents:
+  - proto: WeaponShotgunKammerer
+    amount: 1
+
+- type: blackMarketContract
+  id: BMContractResearchDisk10k
+  category: Technology
+  price: 8000
+  name: black-market-contract-research-disk-10k
+  description: black-market-contract-research-disk-10k-desc
+  icon: ResearchDisk10000
+  purchaseLimit: 4
+  dynamicPrice: true
+  dynamicPriceIncreasePercent: 0.1
+  dynamicPriceMax: 14000
+  contents:
+  - proto: ResearchDisk10000
+    amount: 1
+
+- type: blackMarketContract
+  id: BMContractResearchDisk35k
+  category: Technology
+  price: 20000
+  name: black-market-contract-research-disk-35k
+  description: black-market-contract-research-disk-35k-desc
+  icon: ResearchDisk35000
+  purchaseLimit: 1
+  dynamicPrice: false
+  contents:
+  - proto: ResearchDisk35000
+    amount: 1
+
+- type: blackMarketContract
+  id: BMContractBlueprintFulton
+  category: Technology
+  price: 10000
+  name: black-market-contract-blueprint-fulton
+  description: black-market-contract-blueprint-fulton-desc
+  icon: BlueprintFulton
+  purchaseLimit: 2
+  dynamicPrice: true
+  dynamicPriceIncreasePercent: 0.2
+  dynamicPriceMax: 18000
+  contents:
+  - proto: BlueprintFulton
+    amount: 1
