@@ -5,6 +5,7 @@
   passiveRefreshDelay: 600
   purchasedRefreshDelay: 180
   recentHistorySize: 2
+  stubContract: BMContractStubWeapons
 
 - type: blackMarketCategory
   id: Technology
@@ -13,3 +14,4 @@
   passiveRefreshDelay: 900
   purchasedRefreshDelay: 240
   recentHistorySize: 2
+  stubContract: BMContractStubTechnology

@@ -26,4 +26,10 @@ public sealed partial class BlackMarketCategoryPrototype : IPrototype
     /// </summary>
     [DataField]
     public int RecentHistorySize = 2;
+
+    /// <summary>
+    /// Fallback contract when no valid entries remain in the pool after exclusions.
+    /// </summary>
+    [DataField]
+    public ProtoId<BlackMarketContractPrototype>? StubContract;
 }

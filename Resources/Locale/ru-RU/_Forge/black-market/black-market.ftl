@@ -16,6 +16,9 @@ black-market-console-timer-soon-label = [color=gray]Скоро смена...[/co
 black-market-console-refreshing-label = [color=gray]Пополнение...[/color]
 black-market-insufficient-funds = Недостаточно средств. Требуется: {$cost} spesos.
 black-market-purchase-limit-reached = Лимит покупок этого контракта на данной консоли исчерпан.
+black-market-contract-stub-name = [color=gray]Нет доступных контрактов[/color]
+black-market-contract-stub-desc = Предложения закончились. Попробуйте после следующей ротации.
+black-market-console-stub-button = Недоступно
 
 black-market-category-weapons = Оружие
 black-market-category-technology = Технологии

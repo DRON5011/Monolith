@@ -56,6 +56,12 @@ public sealed partial class BlackMarketContractPrototype : IPrototype
     /// </summary>
     [DataField]
     public int DynamicPriceMax;
+
+    /// <summary>
+    /// Placeholder contract shown when the pool is exhausted. Not purchasable.
+    /// </summary>
+    [DataField]
+    public bool Stub;
 }
 
 [DataDefinition, Serializable, NetSerializable]

@@ -60,32 +60,52 @@ public sealed partial class BlackMarketSlotEntry : BoxContainer
         if (slot.Available && slot.ContractId != null &&
             _proto.TryIndex<BlackMarketContractPrototype>(slot.ContractId, out var contract))
         {
-            NameLabel.SetMarkup(Loc.GetString("black-market-console-name-label",
-                ("name", Loc.GetString(contract.Name))));
-            PriceLabel.SetMarkup(Loc.GetString("black-market-console-price-label",
-                ("price", BankSystemExtensions.ToSpesoString(slot.Price))));
-            DescriptionLabel.SetMarkup(Loc.GetString("black-market-console-description-label",
-                ("description", Loc.GetString(contract.Description))));
-
-            if (!string.IsNullOrWhiteSpace(slot.IconPrototype))
+            if (contract.Stub)
             {
-                IconView.Visible = true;
-                IconView.SetPrototype(slot.IconPrototype);
-            }
-            else
-            {
-                IconView.Visible = false;
-            }
-
-            if (slot.PurchasesRemaining >= 0)
-            {
-                LimitLabel.Visible = true;
-                LimitLabel.SetMarkup(Loc.GetString("black-market-console-purchase-limit-label",
-                    ("remaining", slot.PurchasesRemaining)));
-            }
-            else
-            {
+                NameLabel.SetMarkup(Loc.GetString("black-market-contract-stub-name"));
+                PriceLabel.SetMarkup(string.Empty);
+                DescriptionLabel.SetMarkup(Loc.GetString("black-market-contract-stub-desc"));
                 LimitLabel.Visible = false;
+
+                if (!string.IsNullOrWhiteSpace(slot.IconPrototype))
+                {
+                    IconView.Visible = true;
+                    IconView.SetPrototype(slot.IconPrototype);
+                }
+                else
+                {
+                    IconView.Visible = false;
+                }
+            }
+            else
+            {
+                NameLabel.SetMarkup(Loc.GetString("black-market-console-name-label",
+                    ("name", Loc.GetString(contract.Name))));
+                PriceLabel.SetMarkup(Loc.GetString("black-market-console-price-label",
+                    ("price", BankSystemExtensions.ToSpesoString(slot.Price))));
+                DescriptionLabel.SetMarkup(Loc.GetString("black-market-console-description-label",
+                    ("description", Loc.GetString(contract.Description))));
+
+                if (!string.IsNullOrWhiteSpace(slot.IconPrototype))
+                {
+                    IconView.Visible = true;
+                    IconView.SetPrototype(slot.IconPrototype);
+                }
+                else
+                {
+                    IconView.Visible = false;
+                }
+
+                if (slot.PurchasesRemaining >= 0)
+                {
+                    LimitLabel.Visible = true;
+                    LimitLabel.SetMarkup(Loc.GetString("black-market-console-purchase-limit-label",
+                        ("remaining", slot.PurchasesRemaining)));
+                }
+                else
+                {
+                    LimitLabel.Visible = false;
+                }
             }
         }
         else
@@ -126,6 +146,11 @@ public sealed partial class BlackMarketSlotEntry : BoxContainer
         UpdatePurchaseButton();
     }
 
+    private bool IsStubContract(string contractId)
+    {
+        return _proto.TryIndex<BlackMarketContractPrototype>(contractId, out var contract) && contract.Stub;
+    }
+
     private LocId GetCategoryName(string categoryId)
     {
         if (_proto.TryIndex<BlackMarketCategoryPrototype>(categoryId, out var category))
@@ -140,7 +165,9 @@ public sealed partial class BlackMarketSlotEntry : BoxContainer
         {
             PurchaseButton.Disabled = true;
             PurchaseButton.ModulateSelfOverride = null;
-            PurchaseButton.Text = Loc.GetString("black-market-console-purchase-button");
+            PurchaseButton.Text = _contractId != null && IsStubContract(_contractId)
+                ? Loc.GetString("black-market-console-stub-button")
+                : Loc.GetString("black-market-console-purchase-button");
             return;
         }
 

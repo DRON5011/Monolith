@@ -16,6 +16,9 @@ black-market-console-timer-soon-label = [color=gray]Rotating soon...[/color]
 black-market-console-refreshing-label = [color=gray]Restocking...[/color]
 black-market-insufficient-funds = Insufficient funds. Required: {$cost} spesos.
 black-market-purchase-limit-reached = This contract has reached its purchase limit for this console.
+black-market-contract-stub-name = [color=gray]No contracts available[/color]
+black-market-contract-stub-desc = Supply exhausted. Check back after the next rotation.
+black-market-console-stub-button = Unavailable
 
 black-market-category-weapons = Weapons
 black-market-category-technology = Technology

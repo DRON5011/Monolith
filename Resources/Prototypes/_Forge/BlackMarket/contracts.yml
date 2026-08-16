@@ -83,3 +83,23 @@
   contents:
   - proto: BlueprintFulton
     amount: 1
+
+- type: blackMarketContract
+  id: BMContractStubWeapons
+  category: Weapons
+  stub: true
+  price: 0
+  name: black-market-contract-stub-name
+  description: black-market-contract-stub-desc
+  icon: Paper
+  contents: []
+
+- type: blackMarketContract
+  id: BMContractStubTechnology
+  category: Technology
+  stub: true
+  price: 0
+  name: black-market-contract-stub-name
+  description: black-market-contract-stub-desc
+  icon: Paper
+  contents: []
