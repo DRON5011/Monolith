@@ -1,4 +1,4 @@
-using Content.Server._Forge.Shipyard.Systems;
+using Content.Server._Forge.Shipyard.Systems; // Forge-change
 using Content.Server._Mono.GameRule.Systems;
 using Content.Server.Power.Components;
 using Content.Server.Shuttles.Components;
@@ -19,7 +19,7 @@ public sealed partial class ShuttleRestrictionsSystem : EntitySystem
     [Dependency] private IGameTiming _gameTiming = default!;
     [Dependency] private ShuttleDeedSystem _shuttleDeed = default!;
     [Dependency] private HyperwarRuleSystem _hyperwar = default!;
-    [Dependency] private ShipyardVesselLimitSystem _vesselLimit = default!;
+    [Dependency] private ShipyardVesselLimitSystem _vesselLimit = default!; // Forge-change
 
     private TimeSpan _lastUpdate = TimeSpan.Zero;
     private readonly TimeSpan _interval = TimeSpan.FromMinutes(1);
