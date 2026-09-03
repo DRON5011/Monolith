@@ -10,8 +10,6 @@ public sealed class MachineConstruction : InteractionTest
     private const string ProtolatheBoard = "ProtolatheMachineCircuitboard";
     private const string Protolathe = "Protolathe";
     private const string Beaker = "Beaker";
-    private const string Processor = "MicroprocessorEconomy1";
-    private const string Motor = "MotorEconomy1";
 
     [Test]
     public async Task ConstructProtolathe()
@@ -21,7 +19,7 @@ public sealed class MachineConstruction : InteractionTest
         ClientAssertPrototype(Unfinished, Target);
         await Interact(Wrench, Cable);
         AssertPrototype(MachineFrame);
-        await Interact(ProtolatheBoard, Bin1, Bin1, Manipulator1, Manipulator1, Beaker, Beaker, Processor, Processor, Motor, Screw);
+        await Interact(ProtolatheBoard, Bin1, Bin1, Manipulator1, Manipulator1, Beaker, Beaker, Screw);
         AssertPrototype(Protolathe);
     }
 
@@ -39,8 +37,6 @@ public sealed class MachineConstruction : InteractionTest
             (Steel, 5),
             (Cable, 1),
             (Beaker, 2),
-            (Motor, 1),
-            (Processor, 2),
             (Manipulator1, 2),
             (Bin1, 2),
             (ProtolatheBoard, 1));
@@ -57,7 +53,7 @@ public sealed class MachineConstruction : InteractionTest
         // Change it into an autolathe
         await InteractUsing("AutolatheMachineCircuitboard");
         AssertPrototype(MachineFrame);
-        await Interact(Bin1, Bin1, Bin1, Manipulator1, Glass, Beaker, Beaker, Motor, Screw);
+        await Interact(Bin1, Bin1, Bin1, Manipulator1, Glass, Beaker, Beaker, Screw);
         AssertPrototype("Autolathe");
     }
 
@@ -79,7 +75,7 @@ public sealed class MachineConstruction : InteractionTest
         AssertPrototype(MachineFrame);
 
         // Reconstruct with better parts.
-        await Interact(ProtolatheBoard, Bin4, Bin4, Manipulator4, Manipulator4, Beaker, Beaker, Processor, Processor, Motor);
+        await Interact(ProtolatheBoard, Bin4, Bin4, Manipulator4, Manipulator4, Beaker, Beaker);
         await Interact(Screw);
         AssertPrototype(Protolathe);
 
@@ -91,4 +87,3 @@ public sealed class MachineConstruction : InteractionTest
         }
     }
 }
-

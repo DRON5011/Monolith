@@ -275,9 +275,10 @@
     - SmartGun # Goobstation
     # Einstein Engines Packs
     - Translators
-    # Forge-change
+    # Forge-change-start
     - BSparts
     - ForgePublicWeapons
+    #Forge-Change-end
 
   - type: EmagLatheRecipes
     emagDynamicPacks:
@@ -360,6 +361,7 @@
     - DrakeIndustriesCircuitBoards # Forge-change
     - ReactorCircuitboards # FH edit
     - BsEnergyCircuitsPack # Forge-Change
+    - ServiceBoardsGoob #Forge-Change
   - type: MaterialStorage
     whitelist:
       tags:
@@ -763,6 +765,7 @@
     staticPacks:
     - BioGenIngredientsStatic
     - BioGenMaterialsStatic
+    - BioGenSwabsStatic
     - FriendlyCubesStatic # Frontier
     - NFBioGenIngredientsStatic # Frontier
     - NFBioGenMaterialsStatic # Frontier
@@ -915,7 +918,7 @@
   components:
   # Forge-change-start
   - type: Sprite
-    sprite: Forge/Structures/Machines/organprinter.rsi
+    sprite: _Forge/Structures/Machines/organprinter.rsi
     snapCardinals: true
     layers:
     - state: base
