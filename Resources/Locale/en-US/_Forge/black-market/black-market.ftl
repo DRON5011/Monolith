@@ -26,8 +26,8 @@ black-market-category-armory = Hardsuits
 black-market-category-resources = Resources
 black-market-category-other = Other
 
-black-market-contract-revolver = Revolver shipment
-black-market-contract-revolver-desc = A boxed Argenti revolver, no questions asked.
+black-market-contract-chainsword =  shipment
+black-market-contract-chainsword-desc = A boxed Argenti revolver, no questions asked.
 black-market-contract-energy-gun = Energy gun shipment
 black-market-contract-energy-gun-desc = Expedition-grade energy sidearm in a sealed crate.
 black-market-contract-shotgun = Shotgun shipment

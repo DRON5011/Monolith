@@ -18,7 +18,7 @@
   - type: BlackMarketConsole
     categorySlots:
       Weapons: 2
-      Technology: 2
+      Armory: 2
     cratePrototype: CrateSyndicate
     maxCrateMachineDistance: 8
     purchaseSound:
