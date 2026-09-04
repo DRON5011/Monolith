@@ -2,16 +2,34 @@
   id: Weapons
   name: black-market-category-weapons
   contractPool: BlackMarketPoolWeapons
-  passiveRefreshDelay: 600
-  purchasedRefreshDelay: 180
+  passiveRefreshDelay: 660
+  purchasedRefreshDelay: 240
   recentHistorySize: 2
   stubContract: BMContractStubWeapons
 
 - type: blackMarketCategory
-  id: Technology
-  name: black-market-category-technology
-  contractPool: BlackMarketPoolTechnology
-  passiveRefreshDelay: 900
+  id: Armory
+  name: black-market-category-armory
+  contractPool: BlackMarketPoolArmory
+  passiveRefreshDelay: 660
   purchasedRefreshDelay: 240
   recentHistorySize: 2
+  stubContract: BMContractStubArmory
+
+- type: blackMarketCategory
+  id: Resources 
+  name: black-market-category-resources
+  contractPool: BlackMarketPoolResources
+  passiveRefreshDelay: 900
+  purchasedRefreshDelay: 180
+  recentHistorySize: 1
   stubContract: BMContractStubTechnology
+  
+- type: blackMarketCategory
+  id: Other
+  name: black-market-category-other
+  contractPool: BlackMarketPoolOther
+  passiveRefreshDelay: 480
+  purchasedRefreshDelay: 120
+  recentHistorySize: 2
+  stubContract: BMContractStubOther

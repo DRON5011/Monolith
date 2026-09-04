@@ -30,9 +30,6 @@ public sealed partial class BlackMarketContractPrototype : IPrototype
     [DataField(required: true)]
     public List<BlackMarketContractContentEntry> Contents { get; private set; } = new();
 
-    [DataField]
-    public EntProtoId Crate = "CrateGenericSteel";
-
     /// <summary>
     /// Max purchases of this contract from a single console per round. 0 = unlimited.
     /// </summary>

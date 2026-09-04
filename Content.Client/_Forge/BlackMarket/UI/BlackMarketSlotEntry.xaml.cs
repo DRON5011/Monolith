@@ -27,6 +27,7 @@ public sealed partial class BlackMarketSlotEntry : BoxContainer
     private bool _awaitingConfirm;
     private float _confirmTimeRemaining;
     private string? _contractId;
+    private bool _isStub;
 
     public int SlotIndex { get; private set; }
 
@@ -57,14 +58,17 @@ public sealed partial class BlackMarketSlotEntry : BoxContainer
         CategoryLabel.SetMarkup(Loc.GetString("black-market-console-category-label",
             ("category", Loc.GetString(GetCategoryName(slot.CategoryId)))));
 
-        if (slot.Available && slot.ContractId != null &&
+        _isStub = false;
+
+        if (slot.ContractId != null &&
             _proto.TryIndex<BlackMarketContractPrototype>(slot.ContractId, out var contract))
         {
             if (contract.Stub)
             {
-                NameLabel.SetMarkup(Loc.GetString("black-market-contract-stub-name"));
+                _isStub = true;
+                NameLabel.SetMarkup(Loc.GetString(contract.Name));
                 PriceLabel.SetMarkup(string.Empty);
-                DescriptionLabel.SetMarkup(Loc.GetString("black-market-contract-stub-desc"));
+                DescriptionLabel.SetMarkup(Loc.GetString(contract.Description));
                 LimitLabel.Visible = false;
 
                 if (!string.IsNullOrWhiteSpace(slot.IconPrototype))
@@ -77,7 +81,7 @@ public sealed partial class BlackMarketSlotEntry : BoxContainer
                     IconView.Visible = false;
                 }
             }
-            else
+            else if (slot.Available)
             {
                 NameLabel.SetMarkup(Loc.GetString("black-market-console-name-label",
                     ("name", Loc.GetString(contract.Name))));
@@ -106,6 +110,15 @@ public sealed partial class BlackMarketSlotEntry : BoxContainer
                 {
                     LimitLabel.Visible = false;
                 }
+            }
+            else
+            {
+                NameLabel.SetMarkup(Loc.GetString("black-market-console-refreshing-label"));
+                PriceLabel.SetMarkup(string.Empty);
+                DescriptionLabel.SetMarkup(string.Empty);
+                LimitLabel.Visible = false;
+                IconView.Visible = false;
+                ResetConfirmState();
             }
         }
         else
@@ -146,9 +159,10 @@ public sealed partial class BlackMarketSlotEntry : BoxContainer
         UpdatePurchaseButton();
     }
 
-    private bool IsStubContract(string contractId)
+    private void ClearConfirmState()
     {
-        return _proto.TryIndex<BlackMarketContractPrototype>(contractId, out var contract) && contract.Stub;
+        _awaitingConfirm = false;
+        _confirmTimeRemaining = 0f;
     }
 
     private LocId GetCategoryName(string categoryId)
@@ -161,11 +175,11 @@ public sealed partial class BlackMarketSlotEntry : BoxContainer
 
     private void UpdatePurchaseButton()
     {
-        if (!_available || _price <= 0)
+        if (_isStub || !_available || _price <= 0)
         {
             PurchaseButton.Disabled = true;
             PurchaseButton.ModulateSelfOverride = null;
-            PurchaseButton.Text = _contractId != null && IsStubContract(_contractId)
+            PurchaseButton.Text = _isStub
                 ? Loc.GetString("black-market-console-stub-button")
                 : Loc.GetString("black-market-console-purchase-button");
             return;
@@ -173,10 +187,10 @@ public sealed partial class BlackMarketSlotEntry : BoxContainer
 
         if (_balance < _price)
         {
+            ClearConfirmState();
             PurchaseButton.Disabled = true;
             PurchaseButton.ModulateSelfOverride = null;
             PurchaseButton.Text = Loc.GetString("black-market-console-insufficient-funds-button");
-            ResetConfirmState();
             return;
         }
 
@@ -200,7 +214,7 @@ public sealed partial class BlackMarketSlotEntry : BoxContainer
             TimerLabel.SetMarkup(Loc.GetString("black-market-console-timer-label",
                 ("time", _untilRefresh.ToString(@"mm\:ss"))));
         }
-        else if (_available)
+        else if (_isStub || _available)
         {
             TimerLabel.SetMarkup(Loc.GetString("black-market-console-timer-soon-label"));
         }

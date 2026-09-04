@@ -1,44 +1,57 @@
 - type: blackMarketContract
-  id: BMContractRevolver
+  id: BMContractADTWeaponMeleePrasatChainsword
   category: Weapons
-  price: 12000
-  name: black-market-contract-revolver
-  description: black-market-contract-revolver-desc
-  icon: WeaponRevolverArgenti
+  price: 275000
+  name: black-market-contract-chainsword
+  description: black-market-contract-chainsword-desc
+  icon: ADTWeaponMeleePrasatChainsword
   purchaseLimit: 3
   dynamicPrice: true
-  dynamicPriceIncreasePercent: 0.12
-  dynamicPriceMax: 22000
+  dynamicPriceIncreasePercent: 0.15
+  dynamicPriceMax: 350000
   contents:
-  - proto: WeaponRevolverArgenti
+  - proto: ADTWeaponMeleePrasatChainsword
     amount: 1
 
 - type: blackMarketContract
-  id: BMContractEnergyGun
+  id: BMContractEnergySwordDouble
   category: Weapons
-  price: 18000
-  name: black-market-contract-energy-gun
-  description: black-market-contract-energy-gun-desc
-  icon: WeaponEnergyGunExpedition
-  purchaseLimit: 2
+  price: 250000
+  name: black-market-contract-energy-sword-double
+  description: black-market-contract-energy-sword-double-desc
+  icon: EnergySwordDouble
+  purchaseLimit: 3
   dynamicPrice: true
   dynamicPriceIncreasePercent: 0.15
-  dynamicPriceMax: 30000
+  dynamicPriceMax: 350000
   contents:
-  - proto: WeaponEnergyGunExpedition
+  - proto: EnergySwordDouble
     amount: 1
 
 - type: blackMarketContract
-  id: BMContractShotgun
+  id: BMContractReinforcedChainsawShield
   category: Weapons
-  price: 15000
-  name: black-market-contract-shotgun
-  description: black-market-contract-shotgun-desc
-  icon: WeaponShotgunKammerer
-  purchaseLimit: 2
+  price: 150000
+  name: black-market-contract-chainsaw-shield
+  description: black-market-contract-chainsaw-shield-desc
+  icon: ReinforcedChainsawShield
+  purchaseLimit: 10
   dynamicPrice: false
   contents:
-  - proto: WeaponShotgunKammerer
+  - proto: ReinforcedChainsawShield
+    amount: 1
+
+- type: blackMarketContract
+  id: BMContractReinforcedChainsawShield
+  category: Weapons
+  price: 150000
+  name: black-market-contract-chainsaw-shield
+  description: black-market-contract-chainsaw-shield-desc
+  icon: ReinforcedChainsawShield
+  purchaseLimit: 10
+  dynamicPrice: false
+  contents:
+  - proto: ReinforcedChainsawShield
     amount: 1
 
 - type: blackMarketContract
@@ -95,8 +108,28 @@
   contents: []
 
 - type: blackMarketContract
-  id: BMContractStubTechnology
-  category: Technology
+  id: BMContractStubResources
+  category: Resources
+  stub: true
+  price: 0
+  name: black-market-contract-stub-name
+  description: black-market-contract-stub-desc
+  icon: Paper
+  contents: []
+
+- type: blackMarketContract
+  id: BMContractStubArmory
+  category: Armory
+  stub: true
+  price: 0
+  name: black-market-contract-stub-name
+  description: black-market-contract-stub-desc
+  icon: Paper
+  contents: []
+
+- type: blackMarketContract
+  id: BMContractStubOther
+  category: Other
   stub: true
   price: 0
   name: black-market-contract-stub-name

@@ -15,13 +15,16 @@ black-market-console-timer-label = [color=gray]Refresh: {$time}[/color]
 black-market-console-timer-soon-label = [color=gray]Rotating soon...[/color]
 black-market-console-refreshing-label = [color=gray]Restocking...[/color]
 black-market-insufficient-funds = Insufficient funds. Required: {$cost} spesos.
+black-market-no-crate-machine = The cargo lift is busy or unavailable. Try again later.
 black-market-purchase-limit-reached = This contract has reached its purchase limit for this console.
 black-market-contract-stub-name = [color=gray]No contracts available[/color]
 black-market-contract-stub-desc = Supply exhausted. Check back after the next rotation.
 black-market-console-stub-button = Unavailable
 
 black-market-category-weapons = Weapons
-black-market-category-technology = Technology
+black-market-category-armory = Hardsuits
+black-market-category-resources = Resources
+black-market-category-other = Other
 
 black-market-contract-revolver = Revolver shipment
 black-market-contract-revolver-desc = A boxed Argenti revolver, no questions asked.
@@ -38,3 +41,6 @@ black-market-contract-blueprint-fulton-desc = Stolen blueprint for Fulton extrac
 
 ent-ComputerForgeBlackMarketContracts = black market contract console
 ent-ComputerForgeBlackMarketContracts-desc = Purchase rotating contraband contracts with bank credits.
+
+ent-BlackMarketCrateMachine = black market cargo lift
+ent-BlackMarketCrateMachine-desc = Delivers contraband crates for the black market console.

@@ -22,7 +22,7 @@ public sealed partial class BlackMarketCategoryPrototype : IPrototype
     public TimeSpan PurchasedRefreshDelay = TimeSpan.FromMinutes(3);
 
     /// <summary>
-    /// Number of recently rolled contracts per category excluded from the next roll on this console.
+    /// Number of recently shown or purchased contracts per category excluded from the next roll on this console.
     /// </summary>
     [DataField]
     public int RecentHistorySize = 2;

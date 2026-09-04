@@ -1,11 +1,11 @@
 using Content.Server.Administration.Logs;
 using Content.Server._NF.Bank;
-using Content.Server.Storage.Components;
-using Content.Server.Storage.EntitySystems;
+using Content.Server._NF.CrateMachine;
 using Content.Shared._Forge.BlackMarket.BUI;
 using Content.Shared._Forge.BlackMarket.Components;
 using Content.Shared._Forge.BlackMarket.Prototypes;
 using Content.Shared._NF.Bank.Components;
+using Content.Shared._NF.CrateMachine.Components;
 using Content.Shared.Database;
 using Content.Shared.Popups;
 using Content.Shared.Power;
@@ -34,10 +34,15 @@ public sealed partial class BlackMarketSystem : EntitySystem
         RecentHistory = 1 << 2,
         PurchaseLimit = 1 << 3,
 
+        /// <summary>
+        /// Full exclusion: no duplicates, no recent history, no purchase-limit overflow.
+        /// </summary>
         Strict = OtherCategorySlots | CurrentContract | RecentHistory | PurchaseLimit,
-        NoHistory = OtherCategorySlots | CurrentContract | PurchaseLimit,
-        NoDuplicates = CurrentContract | PurchaseLimit,
-        PurchaseLimitOnly = PurchaseLimit,
+
+        /// <summary>
+        /// Allow re-rolling the current contract when the pool is tiny, but never duplicate other slots.
+        /// </summary>
+        AllowSameContract = OtherCategorySlots | PurchaseLimit,
     }
 
     [Dependency] private readonly IPrototypeManager _proto = default!;
@@ -45,9 +50,9 @@ public sealed partial class BlackMarketSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly BankSystem _bank = default!;
+    [Dependency] private readonly CrateMachineSystem _crateMachine = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly IAdminLogManager _adminLog = default!;
 
@@ -204,14 +209,28 @@ public sealed partial class BlackMarketSystem : EntitySystem
             return;
         }
 
+        if (!_crateMachine.FindNearestUnoccupied(
+                uid,
+                comp.MaxCrateMachineDistance,
+                CrateMachineKind.BlackMarket,
+                out var machineUid,
+                out var machineComp,
+                comp.CratePrototype.ToString()))
+        {
+            _audio.PlayPvs(comp.DenySound, uid);
+            _popup.PopupEntity(Loc.GetString("black-market-no-crate-machine"), player, player);
+            return;
+        }
+
         if (!_bank.TryBankWithdraw(player, price))
         {
             _audio.PlayPvs(comp.DenySound, uid);
             return;
         }
 
-        RecordPurchase(comp, contract.ID);
-        SpawnContractCrate(uid, contract);
+        RecordPurchase(comp, contract);
+        _crateMachine.QueueBlackMarketDelivery(machineUid.Value, comp.CratePrototype, contract);
+        _crateMachine.OpenFor(machineUid.Value, machineComp);
         EnterPurchasedCooldown(uid, comp, args.SlotIndex);
         _audio.PlayPvs(comp.PurchaseSound, uid);
         _adminLog.Add(LogType.Action, LogImpact.Medium,
@@ -220,10 +239,13 @@ public sealed partial class BlackMarketSystem : EntitySystem
         UpdateUi(uid, comp, player);
     }
 
-    private void RecordPurchase(BlackMarketConsoleComponent comp, string contractId)
+    private void RecordPurchase(BlackMarketConsoleComponent comp, BlackMarketContractPrototype contract)
     {
-        comp.ContractPurchaseCounts.TryGetValue(contractId, out var count);
-        comp.ContractPurchaseCounts[contractId] = count + 1;
+        comp.ContractPurchaseCounts.TryGetValue(contract.ID, out var count);
+        comp.ContractPurchaseCounts[contract.ID] = count + 1;
+
+        if (_proto.TryIndex(contract.Category, out BlackMarketCategoryPrototype? category))
+            AddToRecentHistory(comp, category, contract.ID);
     }
 
     private static bool IsPurchaseLimitReached(BlackMarketConsoleComponent comp, BlackMarketContractPrototype contract)
@@ -259,23 +281,6 @@ public sealed partial class BlackMarketSystem : EntitySystem
         return Math.Max(price, contract.Price);
     }
 
-    private void SpawnContractCrate(EntityUid console, BlackMarketContractPrototype contract)
-    {
-        var crate = Spawn(contract.Crate, Transform(console).Coordinates);
-        _meta.SetEntityName(crate, Loc.GetString(contract.Name));
-
-        var coords = Transform(crate).Coordinates;
-        foreach (var entry in contract.Contents)
-        {
-            for (var i = 0; i < entry.Amount; i++)
-            {
-                var item = Spawn(entry.Proto, coords);
-                if (TryComp<EntityStorageComponent>(crate, out var storage))
-                    _entityStorage.Insert(item, crate, storage);
-            }
-        }
-    }
-
     private void EnterPurchasedCooldown(EntityUid uid, BlackMarketConsoleComponent comp, int slotIndex)
     {
         var slot = comp.Slots[slotIndex];
@@ -304,6 +309,8 @@ public sealed partial class BlackMarketSystem : EntitySystem
             return ApplyRollFallback(uid, comp, slotIndex, category);
         }
 
+        PruneUnavailableHistory(comp, category, pool);
+
         var currentContractId = excludeCurrent ? slot.ContractId : null;
         var contractId = TryPickContractId(comp, category, slotIndex, pool, currentContractId);
 
@@ -328,6 +335,7 @@ public sealed partial class BlackMarketSystem : EntitySystem
 
     /// <summary>
     /// Picks a contract using progressively relaxed exclusions when the pool is too small.
+    /// History is trimmed one entry at a time (oldest first) before allowing duplicate slots or stubs.
     /// </summary>
     private string? TryPickContractId(
         BlackMarketConsoleComponent comp,
@@ -336,23 +344,26 @@ public sealed partial class BlackMarketSystem : EntitySystem
         WeightedRandomPrototype pool,
         string? currentContractId)
     {
-        ReadOnlySpan<ContractExclusion> levels =
-        [
-            ContractExclusion.Strict,
-            ContractExclusion.NoHistory,
-            ContractExclusion.NoDuplicates,
-            ContractExclusion.PurchaseLimitOnly,
-            ContractExclusion.None,
-        ];
+        comp.RecentContractsByCategory.TryGetValue(category.ID, out var history);
+        var historyLength = history?.Count ?? 0;
 
-        foreach (var level in levels)
+        // Keep full history first, then allow older entries back one at a time.
+        for (var historyExclude = historyLength; historyExclude >= 0; historyExclude--)
         {
-            var picks = BuildEligiblePicks(comp, category, slotIndex, pool, currentContractId, level);
-            if (picks.Count == 0)
-                continue;
+            var picks = BuildEligiblePicks(
+                comp, category, slotIndex, pool, currentContractId,
+                ContractExclusion.Strict, historyExclude);
 
-            return _random.Pick(picks);
+            if (picks.Count > 0)
+                return _random.Pick(picks);
         }
+
+        var sameContractPicks = BuildEligiblePicks(
+            comp, category, slotIndex, pool, currentContractId,
+            ContractExclusion.AllowSameContract);
+
+        if (sameContractPicks.Count > 0)
+            return _random.Pick(sameContractPicks);
 
         return null;
     }
@@ -363,9 +374,11 @@ public sealed partial class BlackMarketSystem : EntitySystem
         int slotIndex,
         WeightedRandomPrototype pool,
         string? currentContractId,
-        ContractExclusion exclusions)
+        ContractExclusion exclusions,
+        int recentHistoryEntriesToExclude = int.MaxValue)
     {
-        var excluded = GetExcludedContractIds(comp, category, slotIndex, currentContractId, exclusions);
+        var excluded = GetExcludedContractIds(
+            comp, category, slotIndex, currentContractId, exclusions, recentHistoryEntriesToExclude);
         var picks = new Dictionary<string, float>();
 
         foreach (var (contractId, weight) in pool.Weights)
@@ -410,7 +423,8 @@ public sealed partial class BlackMarketSystem : EntitySystem
         BlackMarketCategoryPrototype category,
         int slotIndex,
         string? currentContractId,
-        ContractExclusion exclusions)
+        ContractExclusion exclusions,
+        int recentHistoryEntriesToExclude = int.MaxValue)
     {
         var excluded = new HashSet<string>();
 
@@ -425,8 +439,14 @@ public sealed partial class BlackMarketSystem : EntitySystem
                 if (other.CategoryId != category.ID)
                     continue;
 
-                if (other.Mode == BlackMarketSlotMode.Available && other.ContractId != null)
-                    excluded.Add(other.ContractId);
+                if (other.Mode != BlackMarketSlotMode.Available || other.ContractId == null)
+                    continue;
+
+                if (!_proto.TryIndex<BlackMarketContractPrototype>(other.ContractId, out var otherContract) ||
+                    otherContract.Stub)
+                    continue;
+
+                excluded.Add(other.ContractId);
             }
         }
 
@@ -436,8 +456,12 @@ public sealed partial class BlackMarketSystem : EntitySystem
         if (exclusions.HasFlag(ContractExclusion.RecentHistory) &&
             comp.RecentContractsByCategory.TryGetValue(category.ID, out var recent))
         {
-            foreach (var id in recent)
-                excluded.Add(id);
+            var excludeCount = recentHistoryEntriesToExclude == int.MaxValue
+                ? recent.Count
+                : Math.Clamp(recentHistoryEntriesToExclude, 0, recent.Count);
+
+            for (var i = 0; i < excludeCount; i++)
+                excluded.Add(recent[i]);
         }
 
         if (exclusions.HasFlag(ContractExclusion.PurchaseLimit))
@@ -477,6 +501,38 @@ public sealed partial class BlackMarketSystem : EntitySystem
 
         while (history.Count > category.RecentHistorySize)
             history.RemoveAt(history.Count - 1);
+    }
+
+    /// <summary>
+    /// Drops history entries that can no longer be rolled (limit reached or removed from pool).
+    /// </summary>
+    private void PruneUnavailableHistory(
+        BlackMarketConsoleComponent comp,
+        BlackMarketCategoryPrototype category,
+        WeightedRandomPrototype pool)
+    {
+        if (!comp.RecentContractsByCategory.TryGetValue(category.ID, out var history))
+            return;
+
+        for (var i = history.Count - 1; i >= 0; i--)
+        {
+            var contractId = history[i];
+
+            if (!pool.Weights.TryGetValue(contractId, out var weight) || weight <= 0)
+            {
+                history.RemoveAt(i);
+                continue;
+            }
+
+            if (!_proto.TryIndex<BlackMarketContractPrototype>(contractId, out var contract) || contract.Stub)
+            {
+                history.RemoveAt(i);
+                continue;
+            }
+
+            if (IsPurchaseLimitReached(comp, contract))
+                history.RemoveAt(i);
+        }
     }
 
     private void UpdateUi(EntityUid uid, BlackMarketConsoleComponent comp, EntityUid? viewer = null)

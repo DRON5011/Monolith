@@ -19,6 +19,8 @@
     categorySlots:
       Weapons: 2
       Technology: 2
+    cratePrototype: CrateSyndicate
+    maxCrateMachineDistance: 8
     purchaseSound:
       path: /Audio/Effects/Lightning/lightningbolt.ogg
       params:
