@@ -19,7 +19,7 @@
     categorySlots:
       Weapons: 2
       Armory: 2
-    cratePrototype: CrateSyndicate
+    cratePrototype: CrateGenericSteel #KoT-change CrateSyndicate to CrateGenericSteel
     maxCrateMachineDistance: 8
     purchaseSound:
       path: /Audio/Effects/Lightning/lightningbolt.ogg

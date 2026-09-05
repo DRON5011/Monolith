@@ -7,7 +7,7 @@
     BMContractWeaponShotgunBulldog: 0.9
     BMContractWeaponLMGHammer: 0.5
     BMContractWeaponLightMachineGunL6: 0.4
-    BMContractForgeWeaponEnergyPistolLaserAntique: 0.8
+    #BMContractForgeWeaponEnergyPistolLaserAntique: 0.8
     BMContractWeaponLauncherChinaLake: 0.4
     BMContractWeaponRevolverMagnus: 0.65
     BMContractWeaponDEWBasilisk: 0.1
@@ -30,3 +30,13 @@
     BMContractClothingOuterHardsuitNexusMilT2: 1
     BMContractClothingModsuitUSSPZastavnik: 0.6
     BMContractClothingOuterHardsuitERTSecurity: 1
+
+#- type: wightedRandom
+#  id: BlackMarketPoolResources
+#  weights:
+#    123
+
+#- type: wightedRandom
+#  id: BlackMarketPoolOther
+#  weights:
+#    123
