@@ -1,4 +1,4 @@
-# Melee Weapons
+#region Melee Weapons
 - type: blackMarketContract
   id: BMContractADTWeaponMeleePrasatChainsword
   category: Weapons
@@ -42,7 +42,7 @@
   - proto: ReinforcedChainsawShield
     amount: 1
 
-# Ranged Weapons
+#region Ranged Weapons
 
 - type: blackMarketContract
   id: BMContractWeaponShotgunBulldog
