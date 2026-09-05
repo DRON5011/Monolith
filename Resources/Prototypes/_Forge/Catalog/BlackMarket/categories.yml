@@ -20,16 +20,16 @@
   id: Resources
   name: black-market-category-resources
   contractPool: BlackMarketPoolResources
-  passiveRefreshDelay: 900 # KoT-change 900
-  purchasedRefreshDelay: 180 # KoT-change 180
+  passiveRefreshDelay: 120 # KoT-change 900
+  purchasedRefreshDelay: 60 # KoT-change 180
   recentHistorySize: 1
-  stubContract: BMContractStubTechnology
+  stubContract: BMContractStubResources
 
 - type: blackMarketCategory
   id: Other
   name: black-market-category-other
   contractPool: BlackMarketPoolOther
-  passiveRefreshDelay: 480 # KoT-change 480
-  purchasedRefreshDelay: 120 # KoT-change 120
+  passiveRefreshDelay: 120 # KoT-change 480
+  purchasedRefreshDelay: 60 # KoT-change 120
   recentHistorySize: 2
   stubContract: BMContractStubOther

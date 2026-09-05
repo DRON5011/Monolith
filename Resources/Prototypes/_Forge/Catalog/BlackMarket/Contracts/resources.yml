@@ -1,14 +1,3 @@
-# Stub Contract
-- type: blackMarketContract
-  id: BMContractStubResources
-  category: Resources
-  stub: true
-  price: 0
-  name: black-market-contract-stub-name
-  description: black-market-contract-stub-desc
-  icon: Paper
-  contents: []
-
 # KoT-change-start
 #region Base material
 
@@ -225,3 +214,15 @@
     amount: 1
 
 # KoT-change-end
+
+#region Stub Contract
+- type: blackMarketContract
+  id: BMContractStubResources
+  category: Resources
+  stub: true
+  price: 0
+  name: black-market-contract-stub-name
+  description: black-market-contract-stub-desc
+  icon: Paper
+  contents: []
+
