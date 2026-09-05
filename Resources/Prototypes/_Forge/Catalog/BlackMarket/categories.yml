@@ -2,8 +2,8 @@
   id: Weapons
   name: black-market-category-weapons
   contractPool: BlackMarketPoolWeapons
-  passiveRefreshDelay: 120 # 660
-  purchasedRefreshDelay: 60 # 240
+  passiveRefreshDelay: 120 # KoT-change 660
+  purchasedRefreshDelay: 60 # KoT-change 240
   recentHistorySize: 2
   stubContract: BMContractStubWeapons
 
@@ -11,8 +11,8 @@
   id: Armory
   name: black-market-category-armory
   contractPool: BlackMarketPoolArmory
-  passiveRefreshDelay: 120 # 660
-  purchasedRefreshDelay: 60 # 240
+  passiveRefreshDelay: 120 # KoT-change 660
+  purchasedRefreshDelay: 60 # KoT-change 240
   recentHistorySize: 2
   stubContract: BMContractStubArmory
 
@@ -20,8 +20,8 @@
   id: Resources
   name: black-market-category-resources
   contractPool: BlackMarketPoolResources
-  passiveRefreshDelay: 900 # 900
-  purchasedRefreshDelay: 180 # 180
+  passiveRefreshDelay: 900 # KoT-change 900
+  purchasedRefreshDelay: 180 # KoT-change 180
   recentHistorySize: 1
   stubContract: BMContractStubTechnology
 
@@ -29,7 +29,7 @@
   id: Other
   name: black-market-category-other
   contractPool: BlackMarketPoolOther
-  passiveRefreshDelay: 480 # 480
-  purchasedRefreshDelay: 120 # 120
+  passiveRefreshDelay: 480 # KoT-change 480
+  purchasedRefreshDelay: 120 # KoT-change 120
   recentHistorySize: 2
   stubContract: BMContractStubOther
