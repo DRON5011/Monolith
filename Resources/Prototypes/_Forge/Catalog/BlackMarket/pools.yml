@@ -52,24 +52,24 @@
 #- type: wightedRandom
 #  id: BlackMarketPoolOther
 #  weights:
-#    BMContractDifferentResearchDisk35000:
-#    BMContractDifferentResearchDisk65000:
-#    BMContractDifferentResearchDisk100000:
-#    BMContractDifferentEncryptionKeyNfsd:
-#    BMContractDifferentEncryptionKeyEmpire:
-#    BMContractDifferentEncryptionKeyRenegade:
-#    BMContractDifferentEncryptionKeyService:
-#    BMContractDifferentEncryptionKeyDrakeIndustries:
-#    BMContractDifferentEncryptionKeyNexus:
-#    BMContractDifferentEncryptionKeyUllmanIndustries:
-#    BMContractDifferentEncryptionKeyHarmony:
-#    BMContractDifferentDisciplinesDiskDrakeIndustries: # ЗАМЕНИТЬ НА ПРОТОТИПЫ ДРУГИХ ДИСКОВ ВСЕ ДИСКИ КОМПАНИЙ
-#    BMContractDifferentDisciplinesDiskUllman:
-#    BMContractDifferentDisciplinesDiskNSC:
-#    BMContractDifferentDisciplinesDiskNanotrasen:
-#    BMContractDifferentEncryptionKeyHarmony: # КОНЕЦ ТЕХНОЛОГИЙ КОМПАНИЙ
-#    BMContractDifferentSpaceCashCounterfeit:
-#    BMContractDifferentPillSpaceDrugs:
-#    BMContractDifferentSyringeMorphine:
-#    BMContractDifferentOmnizineChemistryBottle:
-#    BMContractDifferentDrinkPremiumRumBottleFull:
+#    BMContractOtherResearchDisk35000:
+#    BMContractOtherResearchDisk65000:
+#    BMContractOtherResearchDisk100000:
+#    BMContractOtherEncryptionKeyNfsd:
+#    BMContractOtherEncryptionKeyEmpire:
+#    BMContractOtherEncryptionKeyRenegade:
+#    BMContractOtherEncryptionKeyService:
+#    BMContractOtherEncryptionKeyDrakeIndustries:
+#    BMContractOtherEncryptionKeyNexus:
+#    BMContractOtherEncryptionKeyUllmanIndustries:
+#    BMContractOtherEncryptionKeyHarmony:
+#    BMContractOtherDisciplinesDiskDrakeIndustries: # ЗАМЕНИТЬ НА ПРОТОТИПЫ ДРУГИХ ДИСКОВ ВСЕ ДИСКИ КОМПАНИЙ
+#    BMContractOtherDisciplinesDiskUllman:
+#    BMContractOtherDisciplinesDiskNSC:
+#    BMContractOtherDisciplinesDiskNanotrasen:
+#    BMContractOtherEncryptionKeyHarmony: # КОНЕЦ ТЕХНОЛОГИЙ КОМПАНИЙ
+#    BMContractOtherSpaceCashCounterfeit:
+#    BMContractOtherPillSpaceDrugs:
+#    BMContractOtherSyringeMorphine:
+#    BMContractOtherOmnizineChemistryBottle:
+#    BMContractOtherDrinkPremiumRumBottleFull:
