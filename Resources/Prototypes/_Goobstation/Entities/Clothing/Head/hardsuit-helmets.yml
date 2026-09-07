@@ -34,7 +34,7 @@
 
 # cybersun stealth
 - type: entity
-  parent: [ClothingHeadHardsuitBaseMilitary, BaseToggleClothing, PowerCellSlotSmallItem, ClothingNightVision4Normal, ShowSecurityIcons] # Forge-change add ClothingNightVision and replace ClothingHeadHardsuitBase by ClothingHeadHardsuitBaseMilitary
+  parent: [ClothingHeadHardsuitBaseMilitary, BaseToggleClothing, PowerCellSlotSmallItem, ClothingNightVision4Normal, ShowSecurityIcons, BaseClothingHelmetMassScanner] # Forge-change add ClothingNightVision and replace ClothingHeadHardsuitBase by ClothingHeadHardsuitBaseMilitary, add BaseClothingHelmetMassScanner
   id: ClothingHeadHelmetHardsuitCybersunStealth
   suffix: stealth
   name: cybersun stealth hardsuit helmet
