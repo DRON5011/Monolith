@@ -17,5 +17,5 @@
   components:
   - type: InstantAction
     clientExclusive: true
-    icon: { sprite: Objects\Specific\Medical\healthanalyzer.rsi, state: icon }
+    icon: { sprite: Objects/Specific/Medical/healthanalyzer.rsi, state: icon }
     event: !type:OpenModsuitGauntletToolsMenuActionEvent {}
