@@ -32,10 +32,6 @@ black-market-contract-energy-gun = Energy gun shipment
 black-market-contract-energy-gun-desc = Expedition-grade energy sidearm in a sealed crate.
 black-market-contract-shotgun = Shotgun shipment
 black-market-contract-shotgun-desc = Kammerer shotgun ready for pickup.
-black-market-contract-research-disk-10k = Research disk (10k)
-black-market-contract-research-disk-10k-desc = Encrypted research data on a portable disk.
-black-market-contract-research-disk-35k = Research disk (35k)
-black-market-contract-research-disk-35k-desc = High-value research data from a corporate leak.
 black-market-contract-blueprint-fulton = Fulton blueprint
 black-market-contract-blueprint-fulton-desc = Stolen blueprint for Fulton extraction equipment.
 
@@ -64,6 +60,45 @@ black-market-contract-sheet-plasteel-desc = One hundred high-quality sheets of p
 black-market-contract-sheet-plastitanium = Thirty sheets of plastitanium. black-market-contract-sheet-plastitanium-desc = One of the strongest and rarest alloys. Not like the ones in the box.
 black-market-contract-sheet-iridite = Ten sheets of iridite.
 black-market-contract-sheet-iridite-desc = Someone synthesized it!
+
+black-market-contract-research-disc-35000 = Disc with 35,000 research points
+black-market-contract-research-disc-35000-desc = Some think the price is too high.
+black-market-contract-research-disc-65000 = Disc with 65,000 research points
+black-market-contract-research-disc-65000-desc = The box has the words "Trojan! Do not insert..." carelessly scrawled on it.
+black-market-contract-research-disc-100000 = Disc with 100,000 research points
+black-market-contract-research-disc-100000-desc = The box is slightly crumpled. There are also several laser burns on the surface.
+black-market-contract-encryption-key-nfsd = NFS encryption key. black-market-contract-encryption-key-nfsd-desc = This box reeks of democracy with a dash of capitalism and equality. Best not to let local forces know you possess its contents.
+black-market-contract-encryption-key-empire = SIV Encryption Key.
+black-market-contract-encryption-key-empire-desc = This box reeks of incense, faith, and thirty lashes in the name of preventing dissent.
+black-market-contract-encryption-key-renegade = VKR Encryption Key.
+black-market-contract-encryption-key-renegade-desc = The box bears the marks of a vulpa's claws... or a vox... It clearly wasn't given up without a fight.
+black-market-contract-encryption-key-service = NT Encryption Key. black-market-contract-encryption-key-service-desc = After activation, a BS artillery salvo may be launched at your position.
+black-market-contract-encryption-key-drake-industries = Drake Industries Encryption Key.
+black-market-contract-encryption-key-drake-industries-desc = The crate is covered in sweat, soot, and asteroid dust.
+black-market-contract-encryption-key-nexus = Nexus Encryption Key.
+black-market-contract-encryption-key-nexus-desc = A neat and clean container. A tattered, bureaucratically standardized, specially formatted sticker is visible on it.
+black-market-contract-encryption-key-ullman-industries = Ullman Industries Encryption Key. black-market-contract-encryption-key-ullman-industries-desc = DISCLAIMER: Our company is in no way involved in supplying this market.
+black-market-contract-encryption-key-harmony = HME encryption key.
+black-market-contract-encryption-key-harmony-desc = A crate with faded white and orange stripes.
+black-market-contract-disciplines-disk-drake-industries = Drake Industries Technology Disk.
+black-market-contract-disciplines-disk-drake-industries-desc = Contains a slightly bent Technology Disk.
+black-market-contract-disciplines-disk-ullman = Ullman Industries Technology Disk.
+black-market-contract-disciplines-disk-ullman-desc = After purchase, no one guarantees you'll survive until the end of your shift. black-market-contract-disciplines-disk-NSC = Nexus Star Consortium Technology Disk.
+black-market-contract-disciplines-disk-NSC-desc = Dark blue stains from washed-off paint are visible on the neat box. The disk inside is slightly scratched.
+black-market-contract-disciplines-disk-nanotrasen = Nanotrasen Technology Disk.
+black-market-contract-disciplines-disk-nanotrasen-desc = After integration into your R&D server, automatically creates a contract for you.
+black-market-contract-disciplines-disk-HME = HME Technology Disk.
+black-market-contract-disciplines-disk-HME-desc = Upon purchase, automatically enables radar signature and sensors in position tracking mode.
+black-market-contract-space-cash-counterfeit = A crate of counterfeit credits.
+black-market-contract-space-cash-counterfeit-desc = Impossible to distinguish from the real thing without an expert examination.
+black-market-contract-pill-space-drugs = A crate of space drugs.
+black-market-contract-pill-space-drugs-desc = The grass was greener, the sky was bluer, and the crate was fuller.
+black-market-contract-syringe-morphine = A crate with a couple of morphine syringes.
+black-market-contract-syringe-morphine-desc = The lock on the crate was broken.
+black-market-contract-omnizine-chemistry-bottle = A crate with a bottle of omnizine.
+black-market-contract-omnizine-chemistry-bottle-desc = The rest were broken during delivery.
+black-market-contract-drink-premium-rum-bottle-full = A premium crate of rum bottles. You can see some leaks under the lid...
+black-market-contract-drink-premium-rum-bottle-full-desc = The pirates really didn't want to give it up.
 
 ent-ComputerForgeBlackMarketContracts = black market contract console
 ent-ComputerForgeBlackMarketContracts-desc = Purchase rotating contraband contracts with bank credits.
