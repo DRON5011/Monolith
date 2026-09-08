@@ -24,7 +24,7 @@
     cratePrototype: CrateGenericSteel #KoT-change CrateSyndicate to CrateGenericSteel
     maxCrateMachineDistance: 8
     purchaseSound:
-      path: /Audio/Effects/Lightning/lightningbolt.ogg
+      path: /Audio/Effects/Cargo/ping.ogg
       params:
         volume: -5
         variation: 0.2

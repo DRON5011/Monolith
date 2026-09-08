@@ -186,8 +186,6 @@
   contents:
   - proto: DisciplinesDiskDrakeIndustries
     amount: 1
-  - proto: SpawnLootTechDisksPrinterT1
-    amount: 2
 
 - type: blackMarketContract
   id: BMContractOtherDisciplinesDiskUllman # ЗАМЕНИТЬ НА ПРОТОТИПЫ ДРУГИХ ДИСКОВ ВСЕ ДИСКИ КОМПАНИЙ
