@@ -331,14 +331,14 @@
 - type: blackMarketContract
   id: BMContractOtherCircuitImprinterHyperConvectionMachineCircuitboard
   category: Other
-  price: 300
+  price: 500000
   name: black-market-contract-drink-premium-rum-bottle-full
   description: black-market-contract-drink-premium-rum-bottle-full-desc
   icon: CircuitImprinterHyperConvectionMachineCircuitboard
   purchaseLimit: 3
   dynamicPrice: true
-  dynamicPriceIncreasePercent: 0.15
-  dynamicPriceMax: 5000
+  dynamicPriceIncreasePercent: 0.30
+  dynamicPriceMax: 1000000
   contents:
   - proto: CircuitImprinterHyperConvectionMachineCircuitboard
     amount: 1
