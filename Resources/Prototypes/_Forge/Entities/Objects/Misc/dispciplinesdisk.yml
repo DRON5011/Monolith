@@ -241,7 +241,7 @@
 #region Broken Disks
 
 - type: entity
-  id: DisciplinesDiskDrakeIndustriesBroken1
+  id: DisciplinesDiskDrakeIndustriesBrokenTest
   parent: BaseItem
   name: broken technology disk (Drake Industries)
   suffix: Drake
