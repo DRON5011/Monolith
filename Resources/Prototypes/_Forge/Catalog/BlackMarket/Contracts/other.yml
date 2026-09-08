@@ -186,6 +186,8 @@
   contents:
   - proto: DisciplinesDiskDrakeIndustries
     amount: 1
+  - proto: SpawnLootTechDisksPrinterT1
+    amount: 2
 
 - type: blackMarketContract
   id: BMContractOtherDisciplinesDiskUllman # ЗАМЕНИТЬ НА ПРОТОТИПЫ ДРУГИХ ДИСКОВ ВСЕ ДИСКИ КОМПАНИЙ
@@ -308,6 +310,8 @@
   contents:
   - proto: OmnizineChemistryBottle
     amount: 1
+  - proto: ShardGlass
+    amount: 3
 
 - type: blackMarketContract
   id: BMContractOtherDrinkPremiumRumBottleFull
@@ -322,6 +326,23 @@
   dynamicPriceMax: 5000
   contents:
   - proto: DrinkPremiumRumBottleFull
+    amount: 1
+  - proto: ShardGlass
+    amount: 3
+
+- type: blackMarketContract
+  id: BMContractOtherCircuitImprinterHyperConvectionMachineCircuitboard
+  category: Other
+  price: 300
+  name: black-market-contract-drink-premium-rum-bottle-full
+  description: black-market-contract-drink-premium-rum-bottle-full-desc
+  icon: CircuitImprinterHyperConvectionMachineCircuitboard
+  purchaseLimit: 3
+  dynamicPrice: true
+  dynamicPriceIncreasePercent: 0.15
+  dynamicPriceMax: 5000
+  contents:
+  - proto: CircuitImprinterHyperConvectionMachineCircuitboard
     amount: 1
 
 # KoT-change-end

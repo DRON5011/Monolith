@@ -17,8 +17,8 @@
       state: blackmarket_key
   - type: BlackMarketConsole
     categorySlots:
-      Weapons: 2
-      Armory: 2
+      Weapons: 1
+      Armory: 1
       Resources: 2 #KoT-change-add
       Other: 2 #KoT-change-add
     cratePrototype: CrateGenericSteel #KoT-change CrateSyndicate to CrateGenericSteel
