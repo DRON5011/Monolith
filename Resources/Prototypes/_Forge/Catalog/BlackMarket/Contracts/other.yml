@@ -172,8 +172,10 @@
 
 #region Tecnologies Disc
 
+#Drake Industries
+
 - type: blackMarketContract
-  id: BMContractOtherDisciplinesDiskDrakeIndustries # ЗАМЕНИТЬ НА ПРОТОТИПЫ ДРУГИХ ДИСКОВ ВСЕ ДИСКИ КОМПАНИЙ
+  id: BMContractOtherDisciplinesDiskDrakeIndustries1
   category: Other
   price: 100000
   name: black-market-contract-disciplines-disk-drake-industries
@@ -184,11 +186,44 @@
   dynamicPriceIncreasePercent: 0.30
   dynamicPriceMax: 500000
   contents:
-  - proto: DisciplinesDiskDrakeIndustries
+  - proto: TechDiskDrakeIndustriesBroken1
     amount: 1
 
 - type: blackMarketContract
-  id: BMContractOtherDisciplinesDiskUllman # ЗАМЕНИТЬ НА ПРОТОТИПЫ ДРУГИХ ДИСКОВ ВСЕ ДИСКИ КОМПАНИЙ
+  id: BMContractOtherDisciplinesDiskDrakeIndustries2
+  category: Other
+  price: 100000
+  name: black-market-contract-disciplines-disk-drake-industries
+  description: black-market-contract-disciplines-disk-drake-industries-desc
+  icon: DisciplinesDiskDrakeIndustries
+  purchaseLimit: 5
+  dynamicPrice: true
+  dynamicPriceIncreasePercent: 0.30
+  dynamicPriceMax: 500000
+  contents:
+  - proto: TechDiskDrakeIndustriesBroken2
+    amount: 1
+
+
+- type: blackMarketContract
+  id: BMContractOtherDisciplinesDiskDrakeIndustries3
+  category: Other
+  price: 100000
+  name: black-market-contract-disciplines-disk-drake-industries
+  description: black-market-contract-disciplines-disk-drake-industries-desc
+  icon: DisciplinesDiskDrakeIndustries
+  purchaseLimit: 5
+  dynamicPrice: true
+  dynamicPriceIncreasePercent: 0.30
+  dynamicPriceMax: 500000
+  contents:
+  - proto: TechDiskDrakeIndustriesBroken3
+    amount: 1
+
+#Ullman Industries
+
+- type: blackMarketContract
+  id: BMContractOtherDisciplinesDiskUllman1
   category: Other
   price: 100000
   name: black-market-contract-disciplines-disk-ullman
@@ -199,11 +234,28 @@
   dynamicPriceIncreasePercent: 0.30
   dynamicPriceMax: 500000
   contents:
-  - proto: DisciplinesDiskUllman
+  - proto: TechDiskUIBroken1
     amount: 1
 
 - type: blackMarketContract
-  id: BMContractOtherDisciplinesDiskNSC # ЗАМЕНИТЬ НА ПРОТОТИПЫ ДРУГИХ ДИСКОВ ВСЕ ДИСКИ КОМПАНИЙ
+  id: BMContractOtherDisciplinesDiskUllman2
+  category: Other
+  price: 100000
+  name: black-market-contract-disciplines-disk-ullman
+  description: black-market-contract-disciplines-disk-ullman-desc
+  icon: DisciplinesDiskUllman
+  purchaseLimit: 5
+  dynamicPrice: true
+  dynamicPriceIncreasePercent: 0.30
+  dynamicPriceMax: 500000
+  contents:
+  - proto: TechDiskUIBroken2
+    amount: 1
+
+#Nexus Star Consortium
+
+- type: blackMarketContract
+  id: BMContractOtherDisciplinesDiskNSC1
   category: Other
   price: 100000
   name: black-market-contract-disciplines-disk-NSC
@@ -214,11 +266,43 @@
   dynamicPriceIncreasePercent: 0.30
   dynamicPriceMax: 500000
   contents:
-  - proto: DisciplinesDiskNSC
+  - proto: TechDiskNexusStarConsortiumBroken1
     amount: 1
 
 - type: blackMarketContract
-  id: BMContractOtherDisciplinesDiskNanotrasen # ЗАМЕНИТЬ НА ПРОТОТИПЫ ДРУГИХ ДИСКОВ ВСЕ ДИСКИ КОМПАНИЙ
+  id: BMContractOtherDisciplinesDiskNSC2
+  category: Other
+  price: 100000
+  name: black-market-contract-disciplines-disk-NSC
+  description: black-market-contract-disciplines-disk-NSC-desc
+  icon: DisciplinesDiskNSC
+  purchaseLimit: 5
+  dynamicPrice: true
+  dynamicPriceIncreasePercent: 0.30
+  dynamicPriceMax: 500000
+  contents:
+  - proto: TechDiskNexusStarConsortiumBroken2
+    amount: 1
+
+- type: blackMarketContract
+  id: BMContractOtherDisciplinesDiskNSC3
+  category: Other
+  price: 100000
+  name: black-market-contract-disciplines-disk-NSC
+  description: black-market-contract-disciplines-disk-NSC-desc
+  icon: DisciplinesDiskNSC
+  purchaseLimit: 5
+  dynamicPrice: true
+  dynamicPriceIncreasePercent: 0.30
+  dynamicPriceMax: 500000
+  contents:
+  - proto: TechDiskNexusStarConsortiumBroken3
+    amount: 1
+
+#Nanotrasen
+
+- type: blackMarketContract
+  id: BMContractOtherDisciplinesDiskNanotrasen1
   category: Other
   price: 150000
   name: black-market-contract-disciplines-disk-nanotrasen
@@ -229,11 +313,43 @@
   dynamicPriceIncreasePercent: 0.30
   dynamicPriceMax: 500000
   contents:
-  - proto: DisciplinesDiskNanotrasen
+  - proto: TechDiskNanotrasenBroken1
     amount: 1
 
 - type: blackMarketContract
-  id: BMContractOtherDisciplinesDiskHME # ЗАМЕНИТЬ НА ПРОТОТИПЫ ДРУГИХ ДИСКОВ ВСЕ ДИСКИ КОМПАНИЙ
+  id: BMContractOtherDisciplinesDiskNanotrasen2
+  category: Other
+  price: 150000
+  name: black-market-contract-disciplines-disk-nanotrasen
+  description: black-market-contract-disciplines-disk-nanotrasen-desc
+  icon: DisciplinesDiskNanotrasen
+  purchaseLimit: 5
+  dynamicPrice: true
+  dynamicPriceIncreasePercent: 0.30
+  dynamicPriceMax: 500000
+  contents:
+  - proto: TechDiskNanotrasenBroken2
+    amount: 1
+
+- type: blackMarketContract
+  id: BMContractOtherDisciplinesDiskNanotrasen3
+  category: Other
+  price: 150000
+  name: black-market-contract-disciplines-disk-nanotrasen
+  description: black-market-contract-disciplines-disk-nanotrasen-desc
+  icon: DisciplinesDiskNanotrasen
+  purchaseLimit: 5
+  dynamicPrice: true
+  dynamicPriceIncreasePercent: 0.30
+  dynamicPriceMax: 500000
+  contents:
+  - proto: TechDiskNanotrasenBroken3
+    amount: 1
+
+#Harmony Medical Enterprise
+
+- type: blackMarketContract
+  id: BMContractOtherDisciplinesDiskHME1
   category: Other
   price: 100000
   name: black-market-contract-disciplines-disk-HME
@@ -244,7 +360,22 @@
   dynamicPriceIncreasePercent: 0.30
   dynamicPriceMax: 500000
   contents:
-  - proto: DisciplinesDiskHME
+  - proto: TechDiskHarmonyBroken1
+    amount: 1
+
+- type: blackMarketContract
+  id: BMContractOtherDisciplinesDiskHME2
+  category: Other
+  price: 100000
+  name: black-market-contract-disciplines-disk-HME
+  description: black-market-contract-disciplines-disk-HME-desc
+  icon: DisciplinesDiskHME
+  purchaseLimit: 5
+  dynamicPrice: true
+  dynamicPriceIncreasePercent: 0.30
+  dynamicPriceMax: 500000
+  contents:
+  - proto: TechDiskHarmonyBroken2
     amount: 1
 
 #region Other/Fun
@@ -332,8 +463,8 @@
   id: BMContractOtherCircuitImprinterHyperConvectionMachineCircuitboard
   category: Other
   price: 500000
-  name: black-market-contract-drink-premium-rum-bottle-full
-  description: black-market-contract-drink-premium-rum-bottle-full-desc
+  name: black-market-contract-circuit-imprinter-hyper-convection-machine-circuitboard
+  description: black-market-contract-circuit-imprinter-hyper-convection-machine-circuitboard-desc
   icon: CircuitImprinterHyperConvectionMachineCircuitboard
   purchaseLimit: 3
   dynamicPrice: true

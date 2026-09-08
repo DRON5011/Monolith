@@ -63,11 +63,19 @@
     BMContractOtherEncryptionKeyNexus: 1
     BMContractOtherEncryptionKeyUllmanIndustries: 1
     BMContractOtherEncryptionKeyHarmony: 1
-    BMContractOtherDisciplinesDiskDrakeIndustries: 1 # ЗАМЕНИТЬ НА ПРОТОТИПЫ ДРУГИХ ДИСКОВ ВСЕ ДИСКИ КОМПАНИЙ
-    BMContractOtherDisciplinesDiskUllman: 1
-    BMContractOtherDisciplinesDiskNSC: 1
-    BMContractOtherDisciplinesDiskNanotrasen: 1
-    BMContractOtherDisciplinesDiskHME: 1 # КОНЕЦ ТЕХНОЛОГИЙ КОМПАНИЙ
+    BMContractOtherDisciplinesDiskDrakeIndustries1: 1
+    BMContractOtherDisciplinesDiskDrakeIndustries2: 1
+    BMContractOtherDisciplinesDiskDrakeIndustries3: 1
+    BMContractOtherDisciplinesDiskUllman1: 1
+    BMContractOtherDisciplinesDiskUllman2: 1
+    BMContractOtherDisciplinesDiskNSC1: 1
+    BMContractOtherDisciplinesDiskNSC2: 1
+    BMContractOtherDisciplinesDiskNSC3: 1
+    BMContractOtherDisciplinesDiskNanotrasen1: 1
+    BMContractOtherDisciplinesDiskNanotrasen2: 1
+    BMContractOtherDisciplinesDiskNanotrasen3: 1
+    BMContractOtherDisciplinesDiskHME1: 1
+    BMContractOtherDisciplinesDiskHME2: 1
     BMContractOtherSpaceCashCounterfeit: 1
     BMContractOtherPillSpaceDrugs: 1
     BMContractOtherSyringeMorphine: 1
