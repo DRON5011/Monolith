@@ -20,6 +20,6 @@ shipyard-preview-exit = Выйти из просмотра
 ship-voucher-cooldown-active = Ваучер ещё не перезарядился, осталось {NATURALFIXED($remainingTime, 1)} минут!
 
 voucher-current-redemptions = Этот ваучер имеет [color=yellow]{$count}[/color] использований.
-voucher-infinite-redemptions = Этот ваучер имеет [color=yellow]бесконченое[/color] число использований.
+voucher-infinite-redemptions = Этот ваучер имеет [color=yellow]бесконечное[/color] число использований.
 voucher-current-cooldown-seconds = Этот ваучер ещё перезаряжается, осталось [color=yellow]{NATURALFIXED($cooldown, 1)}[/color] секунд.
 voucher-current-cooldown-minutes = Этот ваучер ещё перезаряжается, осталось [color=yellow]{NATURALFIXED($cooldown, 1)}[/color] минут.
