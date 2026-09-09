@@ -216,22 +216,26 @@
     parent: true
     components:
     - type: Stealth
-      minVisibility: 0.01
+      minVisibility: -1.5
       maxVisibility: 1
-      damageVisibilityModifier: 1
-      attackVisibilityModifier: 1
+      damageVisibilityModifier: 0.5
+      attackVisibilityModifier: 1.5
     - type: StealthOnMove
-      passiveVisibilityRate: -0.2
-      movementVisibilityRate: 0
+      passiveVisibilityRate: -0.33
+      movementVisibilityRate: 0.17
   - type: UseDelay
     delay: 2
   - type: PowerCellDraw
-    drawRate: 2
+    drawRate: 0.5
   - type: ToggleCellDraw
+  - type: ClothingBatteryAlert
   - type: ItemSlots
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellInternalHardsuit
+        disableEject: true
+        swap: false
 
 # TSFMC M95-R reflect suit
 - type: entity

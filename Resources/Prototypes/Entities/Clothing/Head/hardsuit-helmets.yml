@@ -647,7 +647,7 @@
 #CENTCOMM / ERT HARDSUITS
 #ERT Leader Hardsuit
 - type: entity
-  parent: [ClothingHeadHardsuitBaseMilitary, ClothingNightVision4Normal, ShowSecurityIcons, ShowMedicalIcons, BaseClothingHelmetMassScanner] # Forge-change add ClothingNightVision and replace ClothingHeadHardsuitBase by ClothingHeadHardsuitBaseMilitary and add ShowMedicalIcons, add BaseClothingHelmetMassScanner
+  parent: [ClothingHeadHardsuitBaseMilitary, ClothingHeadSuitWithLightBase, ClothingNightVision4Normal, ShowSecurityIcons, ShowMedicalIcons, BaseClothingHelmetMassScanner] # Forge-change add ClothingNightVision and replace ClothingHeadHardsuitBase by ClothingHeadHardsuitBaseMilitary and add ShowMedicalIcons, add BaseClothingHelmetMassScanner
   id: ClothingHeadHelmetHardsuitERTLeader
   name: ERT leader hardsuit helmet
   description: A special hardsuit helmet worn by members of an emergency response team.
@@ -673,7 +673,7 @@
 
 #ERT Chaplain Hardsuit
 - type: entity
-  parent: [ClothingHeadHardsuitBaseMilitary, ClothingNightVision4Normal, BaseClothingHelmetMassScanner] # Forge-change add ClothingNightVision and replace ClothingHeadHardsuitBase by ClothingHeadHardsuitBaseMilitary, add BaseClothingHelmetMassScanner
+  parent: [ClothingHeadHardsuitBaseMilitary, ClothingHeadSuitWithLightBase, ClothingNightVision4Normal, BaseClothingHelmetMassScanner] # Forge-change add ClothingNightVision and replace ClothingHeadHardsuitBase by ClothingHeadHardsuitBaseMilitary, add BaseClothingHelmetMassScanner
   id: ClothingHeadHelmetHardsuitERTChaplain
   name: ERT chaplain hardsuit helmet
   description: A special hardsuit helmet worn by members of an emergency response team.
@@ -693,7 +693,7 @@
 
 #ERT Engineer Hardsuit
 - type: entity
-  parent: [ClothingHeadHardsuitBaseMilitary, ClothingNightVision2Normal, BaseClothingHelmetMassScanner] # Forge-change add ClothingNightVision and replace ClothingHeadHardsuitBase by ClothingHeadHardsuitBaseMilitary, add BaseClothingHelmetMassScanner
+  parent: [ClothingHeadHardsuitBaseMilitary, ClothingHeadSuitWithLightBase, ClothingNightVision2Normal, BaseClothingHelmetMassScanner] # Forge-change add ClothingNightVision and replace ClothingHeadHardsuitBase by ClothingHeadHardsuitBaseMilitary, add BaseClothingHelmetMassScanner
   id: ClothingHeadHelmetHardsuitERTEngineer
   name: ERT engineer hardsuit helmet
   description: A special hardsuit helmet worn by members of an emergency response team.
@@ -714,7 +714,7 @@
 
 #ERT Medical Hardsuit
 - type: entity
-  parent: [ ClothingHeadHardsuitBaseMilitary, ShowMedicalIcons, ClothingNightVision4Normal, ShowSecurityIcons, BaseClothingHelmetMassScanner] # Forge-change add ClothingNightVision and replace ClothingHeadHardsuitBase by ClothingHeadHardsuitBaseMilitary and add ShowMedicalIcons, add BaseClothingHelmetMassScanner
+  parent: [ ClothingHeadHardsuitBaseMilitary, ClothingHeadSuitWithLightBase, ShowMedicalIcons, ClothingNightVision4Normal, ShowSecurityIcons, BaseClothingHelmetMassScanner] # Forge-change add ClothingNightVision and replace ClothingHeadHardsuitBase by ClothingHeadHardsuitBaseMilitary and add ShowMedicalIcons, add BaseClothingHelmetMassScanner
   id: ClothingHeadHelmetHardsuitERTMedical
   name: ERT medic hardsuit helmet
   description: A special hardsuit helmet worn by members of an emergency response team. Comes with a built-in medical HUD. # Mono
@@ -735,7 +735,7 @@
 
 #ERT Security Hardsuit
 - type: entity
-  parent: [ClothingHeadHardsuitBaseMilitary, ShowMedicalIcons, ClothingNightVision2Normal] # Forge-change add ClothingNightVision and replace ClothingHeadHardsuitBase by ClothingHeadHardsuitBaseMilitary and add ShowMedicalIcons 
+  parent: [ClothingHeadHardsuitBaseMilitary, ClothingHeadSuitWithLightBase, ShowMedicalIcons, ClothingNightVision2Normal] # Forge-change add ClothingNightVision and replace ClothingHeadHardsuitBase by ClothingHeadHardsuitBaseMilitary and add ShowMedicalIcons 
   id: ClothingHeadHelmetHardsuitERTSecurity
   name: ERT security hardsuit helmet
   description: A special hardsuit helmet worn by members of an emergency response team.
@@ -756,7 +756,7 @@
 
 #ERT Janitor Hardsuit
 - type: entity
-  parent: [ClothingHeadHardsuitBaseMilitary, ClothingNightVision2Normal] # Forge-change add ClothingNightVision and replace ClothingHeadHardsuitBase by ClothingHeadHardsuitBaseMilitary
+  parent: [ClothingHeadHardsuitBaseMilitary, ClothingHeadSuitWithLightBase, ClothingNightVision2Normal] # Forge-change add ClothingNightVision and replace ClothingHeadHardsuitBase by ClothingHeadHardsuitBaseMilitary
   id: ClothingHeadHelmetHardsuitERTJanitor
   name: ERT janitor hardsuit helmet
   description: A special hardsuit helmet worn by members of an emergency response team.
