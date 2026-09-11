@@ -2,8 +2,6 @@ using System.Collections.Generic;
 using Content.Server._Forge.BlackMarket.Components;
 using Content.Shared._Forge.BlackMarket.Prototypes;
 using Content.Shared._NF.CrateMachine.Components;
-using Robust.Shared.Prototypes;
-
 namespace Content.Server._NF.CrateMachine;
 
 public sealed partial class CrateMachineSystem
@@ -33,13 +31,13 @@ public sealed partial class CrateMachineSystem
 
     public void QueueBlackMarketDelivery(
         EntityUid machine,
-        EntProtoId cratePrototype,
+        CrateMachineComponent machineComp,
         BlackMarketContractPrototype contract)
     {
         var spawner = EnsureComp<BlackMarketCrateSpawnerComponent>(machine);
         spawner.Pending = new BlackMarketPendingCrateDelivery
         {
-            Crate = cratePrototype,
+            Crate = machineComp.CratePrototype,
             DisplayName = contract.Name,
             Contents = new List<BlackMarketContractContentEntry>(contract.Contents),
         };

@@ -1,5 +1,4 @@
 using Robust.Shared.Audio;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared._Forge.BlackMarket.Components;
@@ -12,12 +11,6 @@ public sealed partial class BlackMarketConsoleComponent : Component
     /// </summary>
     [DataField]
     public Dictionary<string, int> CategorySlots = new();
-
-    /// <summary>
-    /// Crate prototype spawned by the linked cargo lift.
-    /// </summary>
-    [DataField]
-    public EntProtoId CratePrototype = "CrateSyndicate";
 
     /// <summary>
     /// Max tile distance to search for an unoccupied black market cargo lift on the same grid.

@@ -21,7 +21,6 @@
       Armory: 1
       Resources: 2 #KoT-change-add
       Other: 2 #KoT-change-add
-    cratePrototype: CrateGenericSteel #KoT-change CrateSyndicate to CrateGenericSteel
     maxCrateMachineDistance: 8
     purchaseSound:
       path: /Audio/Effects/Cargo/ping.ogg

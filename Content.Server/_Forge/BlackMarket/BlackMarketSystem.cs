@@ -214,8 +214,7 @@ public sealed partial class BlackMarketSystem : EntitySystem
                 comp.MaxCrateMachineDistance,
                 CrateMachineKind.BlackMarket,
                 out var machineUid,
-                out var machineComp,
-                comp.CratePrototype.ToString()))
+                out var machineComp))
         {
             _audio.PlayPvs(comp.DenySound, uid);
             _popup.PopupEntity(Loc.GetString("black-market-no-crate-machine"), player, player);
@@ -229,7 +228,7 @@ public sealed partial class BlackMarketSystem : EntitySystem
         }
 
         RecordPurchase(comp, contract);
-        _crateMachine.QueueBlackMarketDelivery(machineUid.Value, comp.CratePrototype, contract);
+        _crateMachine.QueueBlackMarketDelivery(machineUid.Value, machineComp, contract);
         _crateMachine.OpenFor(machineUid.Value, machineComp);
         EnterPurchasedCooldown(uid, comp, args.SlotIndex);
         _audio.PlayPvs(comp.PurchaseSound, uid);
