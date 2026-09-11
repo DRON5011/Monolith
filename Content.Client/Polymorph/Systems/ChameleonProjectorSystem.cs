@@ -11,6 +11,7 @@ namespace Content.Client.Polymorph.Systems;
 public sealed partial class ChameleonProjectorSystem : SharedChameleonProjectorSystem
 {
     [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SpriteSystem _sprite = default!; // Forge-change: new copy sprite system for chameleon proector
 
     private EntityQuery<AppearanceComponent> _appearanceQuery;
     private EntityQuery<SpriteComponent> _spriteQuery;
@@ -31,7 +32,7 @@ public sealed partial class ChameleonProjectorSystem : SharedChameleonProjectorS
 
     private void OnHandleState(Entity<ChameleonDisguiseComponent> ent, ref AfterAutoHandleStateEvent args)
     {
-        CopyComp<SpriteComponent>(ent);
+        CopySprite(ent); // Forge-change: new copy sprite system for chameleon proector
         CopyComp<GenericVisualizerComponent>(ent);
         CopyComp<SolutionContainerVisualsComponent>(ent);
         CopyComp<BurnStateVisualsComponent>(ent);
@@ -41,19 +42,34 @@ public sealed partial class ChameleonProjectorSystem : SharedChameleonProjectorS
             _appearance.QueueUpdate(ent, appearance);
     }
 
+    // Forge-change-start: new copy sprite system for chameleon proector
+
+    /// <summary>
+    /// Copies the source entity/prototype's sprite onto the disguise.
+    /// </summary>
+    private void CopySprite(Entity<ChameleonDisguiseComponent> ent)
+    {
+        if (!GetSrcEntity<SpriteComponent>(ent.Comp, out var src))
+            return;
+
+        var dest = EnsureComp<SpriteComponent>(ent);
+        _sprite.CopySprite(src, (ent.Owner, dest));
+    }
+    // Forge-change-end: new copy sprite system for chameleon proector
+
     private void OnStartup(Entity<ChameleonDisguisedComponent> ent, ref ComponentStartup args)
     {
         if (!_spriteQuery.TryComp(ent, out var sprite))
             return;
 
         ent.Comp.WasVisible = sprite.Visible;
-        sprite.Visible = false;
+        _sprite.SetVisible((ent.Owner, sprite), false); // Forge-change: new copy sprite system for chameleon proector
     }
 
     private void OnShutdown(Entity<ChameleonDisguisedComponent> ent, ref ComponentShutdown args)
     {
         if (_spriteQuery.TryComp(ent, out var sprite))
-            sprite.Visible = ent.Comp.WasVisible;
+            _sprite.SetVisible((ent.Owner, sprite), ent.Comp.WasVisible); // Forge-change: new copy sprite system for chameleon proector
     }
 
     private void OnGetFlashEffectTargetEvent(Entity<ChameleonDisguisedComponent> ent, ref GetFlashEffectTargetEvent args)
