@@ -9,7 +9,7 @@
   description: black-market-contract-research-disc-35000-desc
   icon: ResearchDisk35000
   purchaseLimit: 0
-  dynamicPrice: false
+  dynamicPrice: true
   dynamicPriceIncreasePercent: 0.05
   dynamicPriceMax: 75000
   contents:
@@ -24,7 +24,7 @@
   description: black-market-contract-research-disc-65000-desc
   icon: ResearchDisk65000
   purchaseLimit: 0
-  dynamicPrice: false
+  dynamicPrice: true
   dynamicPriceIncreasePercent: 0.05
   dynamicPriceMax: 135000
   contents:
@@ -39,7 +39,7 @@
   description: black-market-contract-research-disc-100000-desc
   icon: ResearchDisk100000
   purchaseLimit: 0
-  dynamicPrice: false
+  dynamicPrice: true
   dynamicPriceIncreasePercent: 0.05
   dynamicPriceMax: 205000
   contents:
@@ -388,12 +388,12 @@
   description: black-market-contract-space-cash-counterfeit-desc
   icon: SpaceCashCounterfeit
   purchaseLimit: 0
-  dynamicPrice: false
+  dynamicPrice: true
   dynamicPriceIncreasePercent: 0.01
   dynamicPriceMax: 200000
   contents:
-  - proto: SpaceCashCounterfeit
-    amount: 300000 #KoT-change 200000 to 300000
+  - proto: SpaceCashCounterfeit100000
+    amount: 3
 
 - type: blackMarketContract
   id: BMContractOtherPillSpaceDrugs

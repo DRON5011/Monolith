@@ -69,18 +69,18 @@
     amount: 1
 
 - type: blackMarketContract
-  id: BMContractClothingOuterHardsuitM82c
+  id: BMContractClothingOuterHardsuitTSFMCM82c
   category: Weapons
   price: 800000
   name: black-market-contract-hardsuit-m82c
   description: black-market-contract-hardsuit-m82c-desc
-  icon: ClothingOuterHardsuitM82c
-  purchaseLimit: 0
+  icon: ClothingOuterHardsuitTSFMCM82c
+  purchaseLimit: 8
   dynamicPrice: true
   dynamicPriceIncreasePercent: 0.1
   dynamicPriceMax: 1200000
   contents:
-  - proto: ClothingOuterHardsuitM82c
+  - proto: ClothingOuterHardsuitTSFMCM82c
     amount: 1
 
 - type: blackMarketContract
@@ -90,7 +90,7 @@
   name: black-market-contract-hardsuit-ri14
   description: black-market-contract-hardsuit-ri14-desc
   icon: ClothingOuterHardsuitRI14
-  purchaseLimit: 6
+  purchaseLimit: 5
   dynamicPrice: true
   dynamicPriceIncreasePercent: 0.1
   dynamicPriceMax: 1300000
@@ -120,7 +120,7 @@
   name: black-market-contract-hardsuit-syndie
   description: black-market-contract-hardsuit-syndie-desc
   icon: ClothingOuterHardsuitSyndie
-  purchaseLimit: 0
+  purchaseLimit: 4
   dynamicPrice: true
   dynamicPriceIncreasePercent: 0.15
   dynamicPriceMax: 1500000
@@ -152,7 +152,7 @@
   icon: ClothingOuterHardsuitNexusMilT3
   purchaseLimit: 5
   dynamicPrice: true
-  dynamicPriceIncreasePercent: 0.1
+  dynamicPriceIncreasePercent: 0.13
   dynamicPriceMax: 1900000
   contents:
   - proto: ClothingOuterHardsuitNexusMilT3
@@ -161,14 +161,14 @@
 - type: blackMarketContract
   id: BMContractClothingModsuitUSSPZastavnik
   category: Weapons
-  price: 1150000
+  price: 1650000
   name: black-market-contract-modsuit-ussp-zastavnik
   description: black-market-contract-modsuit-ussp-zastavnik-desc
   icon: ClothingModsuitUSSPZastavnik
-  purchaseLimit: 8
+  purchaseLimit: 3
   dynamicPrice: true
-  dynamicPriceIncreasePercent: 0.1
-  dynamicPriceMax: 1455000
+  dynamicPriceIncreasePercent: 0.2
+  dynamicPriceMax: 1905000
   contents:
   - proto: ClothingModsuitUSSPZastavnik
     amount: 1
@@ -180,7 +180,7 @@
   name: black-market-contract-hardsuit-ert-security
   description: black-market-contract-hardsuit-ert-security-desc
   icon: ClothingOuterHardsuitERTSecurity
-  purchaseLimit: 0
+  purchaseLimit: 5
   dynamicPrice: true
   dynamicPriceIncreasePercent: 0.1
   dynamicPriceMax: 1535000

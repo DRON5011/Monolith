@@ -36,7 +36,7 @@
   name: black-market-contract-chainsaw-shield
   description: black-market-contract-chainsaw-shield-desc
   icon: ReinforcedChainsawShield
-  purchaseLimit: 10
+  purchaseLimit: 6
   dynamicPrice: false
   contents:
   - proto: ReinforcedChainsawShield
@@ -51,7 +51,7 @@
   name: black-market-contract-shotgun-bulldog
   description: black-market-contract-shotgun-bulldog-desc
   icon: WeaponShotgunBulldog
-  purchaseLimit: 0
+  purchaseLimit: 6
   dynamicPrice: true
   dynamicPriceIncreasePercent: 0.05
   dynamicPriceMax: 625000
@@ -70,7 +70,7 @@
   name: black-market-contract-lmg-hammer
   description: black-market-contract-lmg-hammer-desc
   icon: WeaponLMGHammer
-  purchaseLimit: 0
+  purchaseLimit: 7
   dynamicPrice: true
   dynamicPriceIncreasePercent: 0.1
   dynamicPriceMax: 750000
@@ -89,7 +89,7 @@
   name: black-market-contract-lmg-l6
   description: black-market-contract-lmg-l6-desc
   icon: WeaponLightMachineGunL6
-  purchaseLimit: 3
+  purchaseLimit: 4
   dynamicPrice: true
   dynamicPriceIncreasePercent: 0.15
   dynamicPriceMax: 800000
@@ -108,7 +108,7 @@
   name: black-market-contract-launcher-china-lake
   description: black-market-contract-launcher-china-lake-desc
   icon: WeaponLauncherChinaLake
-  purchaseLimit: 3
+  purchaseLimit: 4
   dynamicPrice: true
   dynamicPriceIncreasePercent: 0.2
   dynamicPriceMax: 900000
@@ -125,14 +125,14 @@
 - type: blackMarketContract
   id: BMContractWeaponRevolverMagnus
   category: Weapons
-  price: 800000
+  price: 500000
   name: black-market-contract-revolver-magnus
   description: black-market-contract-revolver-magnus-desc
   icon: WeaponRevolverMagnus
-  purchaseLimit: 0
+  purchaseLimit: 6
   dynamicPrice: true
   dynamicPriceIncreasePercent: 0.1
-  dynamicPriceMax: 1000000
+  dynamicPriceMax: 750000
   contents:
   - proto: WeaponRevolverMagnus
     amount: 1
@@ -167,7 +167,7 @@
   name: black-market-contract-dew-calico
   description: black-market-contract-dew-calico-desc
   icon: WeaponDEWCalico
-  purchaseLimit: 5
+  purchaseLimit: 4
   dynamicPrice: true
   dynamicPriceIncreasePercent: 0.2
   dynamicPriceMax: 900000
@@ -186,7 +186,7 @@
   name: black-market-contract-pulse-pistol
   description: black-market-contract-pulse-pistol-desc
   icon: WeaponPulsePistol
-  purchaseLimit: 10
+  purchaseLimit: 5
   dynamicPrice: true
   dynamicPriceIncreasePercent: 0.1
   dynamicPriceMax: 650000
