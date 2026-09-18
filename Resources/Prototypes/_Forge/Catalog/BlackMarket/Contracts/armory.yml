@@ -188,6 +188,21 @@
   - proto: ClothingOuterHardsuitERTSecurity
     amount: 1
 
+- type: blackMarketContract #KoT-change-add-start
+  id: BMContractClothingOuterModsuitUSSPVaryag
+  category: Weapons
+  price: 1650000
+  name: black-market-contract-modsuit-USSP-varyag
+  description: black-market-contract-modsuit-USSP-varyag-desc
+  icon: ClothingModsuitUSSPVaryag
+  purchaseLimit: 3
+  dynamicPrice: true
+  dynamicPriceIncreasePercent: 0.2
+  dynamicPriceMax: 1905000
+  contents:
+  - proto: ClothingModsuitUSSPVaryag
+    amount: 1 #KoT-change-add-end
+
 # Stub Contract
 - type: blackMarketContract
   id: BMContractStubArmory

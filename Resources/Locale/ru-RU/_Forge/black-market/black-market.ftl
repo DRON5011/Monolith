@@ -75,6 +75,8 @@ black-market-contract-modsuit-ussp-zastavnik = Ядро модкостюма USS
 black-market-contract-modsuit-ussp-zastavnik-desc = Модсьют бойцов СССП. Всё по заветам советов, много брони, мало мобильности.
 black-market-contract-hardsuit-ert-security = Скафандр SEC-45
 black-market-contract-hardsuit-ert-security-desc = Стандартный боевой скафандр боевых отрядов NT. Не имеет сильных и слабых сторон.
+black-market-contract-modsuit-USSP-varyag = Ядро модкостюма USSP «Варяг»
+black-market-contract-modsuit-USSP-varyag-desc = Крепкий модсьют бойцов СССП. На спине имеется несколько пулевых отверстий.
 
 black-market-contract-sheet-steel = Пара стопок стальных листов.
 black-market-contract-sheet-steel-desc = Обычная сталь, цена явно не накручена.

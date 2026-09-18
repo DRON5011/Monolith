@@ -27,8 +27,9 @@
     BMContractClothingOuterHardsuitSyndie: 0.9
     BMContractClothingModsuitHeadOfSecurity: 0.9
     BMContractClothingOuterHardsuitNexusMilT3: 0.4
-    BMContractClothingModsuitUSSPZastavnik: 0.25
+#   BMContractClothingModsuitUSSPZastavnik: 0.25
     BMContractClothingOuterHardsuitERTSecurity: 0.8
+    BMContractClothingOuterModsuitUSSPVaryag: 0.8 #KoT-change-add
 
 - type: weightedRandom
   id: BlackMarketPoolResources
