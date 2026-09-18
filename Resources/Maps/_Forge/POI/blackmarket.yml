@@ -181,6 +181,8 @@ entities:
     - type: GridSplitNode
     - type: ChunkContainer
       chunkEntities: []
+    - type: BecomesStation
+      id: BMRoger
     - type: OccluderTree
     - type: ThermalSignature
     - type: SpreaderGrid
