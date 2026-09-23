@@ -71,6 +71,7 @@ guide-entry-chemist = Chemist
 guide-entry-brute = Advanced Brute Medication
 guide-entry-botanicals = Botanicals
 guide-entry-cloning = Cloning
+guide-entry-genetics = Genetics
 guide-entry-cryogenics = Cryogenics
 guide-entry-science = Science
 guide-entry-technologies = Technologies
@@ -201,9 +202,3 @@ guide-entry-rules-ban-durations = Ban Durations
 
 guide-entry-writing = Writing
 guide-entry-glossary = Glossary
-
-## Shitmed Change
-guide-entry-surgery = Surgery
-guide-entry-partmanipulation = Part Manipulation
-guide-entry-organmanipulation = Organ Manipulation
-guide-entry-utilitysurgeries = Utility Surgeries
