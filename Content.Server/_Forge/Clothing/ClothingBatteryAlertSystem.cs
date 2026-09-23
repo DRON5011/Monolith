@@ -21,6 +21,7 @@ public sealed partial class ClothingBatteryAlertSystem : EntitySystem
 
         SubscribeLocalEvent<ClothingBatteryAlertComponent, ClothingGotEquippedEvent>(OnEquipped);
         SubscribeLocalEvent<ClothingBatteryAlertComponent, ClothingGotUnequippedEvent>(OnUnequipped);
+        SubscribeLocalEvent<ClothingBatteryAlertComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<ClothingBatteryAlertComponent, PowerCellChangedEvent>(OnPowerCellChanged);
         SubscribeLocalEvent<ClothingBatteryAlertComponent, PowerCellSlotEmptyEvent>(OnPowerCellSlotEmpty);
     }
@@ -33,8 +34,13 @@ public sealed partial class ClothingBatteryAlertSystem : EntitySystem
 
     private void OnUnequipped(Entity<ClothingBatteryAlertComponent> ent, ref ClothingGotUnequippedEvent args)
     {
-        ClearAlerts(ent, args.Wearer);
-        ent.Comp.Wearer = null;
+        ClearWornAlert(ent, args.Wearer);
+    }
+
+    private void OnShutdown(Entity<ClothingBatteryAlertComponent> ent, ref ComponentShutdown args)
+    {
+        if (ent.Comp.Wearer is { } wearer)
+            ClearWornAlert(ent, wearer);
     }
 
     private void OnPowerCellChanged(Entity<ClothingBatteryAlertComponent> ent, ref PowerCellChangedEvent args)
@@ -49,7 +55,7 @@ public sealed partial class ClothingBatteryAlertSystem : EntitySystem
 
     private void UpdateAlert(Entity<ClothingBatteryAlertComponent> ent)
     {
-        if (ent.Comp.Wearer is not { } wearer)
+        if (ent.Comp.Wearer is not { } wearer || TerminatingOrDeleted(wearer))
             return;
 
         if (!_powerCell.TryGetBatteryFromSlot(ent, out var battery))
@@ -59,13 +65,33 @@ public sealed partial class ClothingBatteryAlertSystem : EntitySystem
             return;
         }
 
-        var chargePercent = (short) MathF.Round(battery.CurrentCharge / battery.MaxCharge * 10f);
+        var minSeverity = _alerts.GetMinSeverity(ent.Comp.BatteryAlert);
+        var maxSeverity = _alerts.GetMaxSeverity(ent.Comp.BatteryAlert);
+        var chargePercent = minSeverity;
 
-        if (chargePercent == 0 && _powerCell.HasDrawCharge(ent))
-            chargePercent = 1;
+        if (battery.MaxCharge > 0f && maxSeverity >= minSeverity)
+        {
+            chargePercent = (short) Math.Clamp(
+                MathF.Round(battery.CurrentCharge / battery.MaxCharge * maxSeverity),
+                (float) minSeverity,
+                (float) maxSeverity);
+        }
+
+        // Empty icon only when the cell cannot pay the draw rate.
+        if (chargePercent == minSeverity && chargePercent < maxSeverity && _powerCell.HasDrawCharge(ent))
+            chargePercent++;
 
         _alerts.ClearAlert(wearer, ent.Comp.NoBatteryAlert);
         _alerts.ShowAlert(wearer, ent.Comp.BatteryAlert, chargePercent);
+    }
+
+    private void ClearWornAlert(Entity<ClothingBatteryAlertComponent> ent, EntityUid wearer)
+    {
+        if (!TerminatingOrDeleted(wearer))
+            ClearAlerts(ent, wearer);
+
+        if (ent.Comp.Wearer == wearer)
+            ent.Comp.Wearer = null;
     }
 
     private void ClearAlerts(Entity<ClothingBatteryAlertComponent> ent, EntityUid wearer)
