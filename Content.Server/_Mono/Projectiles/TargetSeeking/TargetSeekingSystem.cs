@@ -1,7 +1,14 @@
 using System.Numerics;
+using Content.Server._Mono.FireControl;
+using Content.Server.NPC.HTN;
+using Content.Server.Shuttles.Components; // Forge-change
+using Content.Shared._Crescent.DroneControl; // Forge-change
 using Content.Shared.Interaction;
 using Content.Shared.Projectiles;
+using Content.Shared._Mono.FireControl;
 using Robust.Server.GameObjects;
+using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -84,8 +91,10 @@ public sealed partial class TargetSeekingSystem : EntitySystem
     {
         var (_, seekerComponent) = seekerEntity;
 
+        var targetChanged = seekerComponent.CurrentTarget != targetUid;
+
         // if the new target is different from the old target,
-        if (seekerComponent.CurrentTarget != targetUid)
+        if (targetChanged)
         {
             // and we had an old target, then raise changing-seeking
             if (seekerComponent.CurrentTarget is { } oldTargetUid)
@@ -97,6 +106,176 @@ public sealed partial class TargetSeekingSystem : EntitySystem
         }
 
         seekerComponent.CurrentTarget = targetUid;
+        UpdateSeekerAimPoint(seekerEntity.Owner, seekerComponent, targetUid, seekerTransform); // Forge-change: Add a parameter for the seeker transform.
+
+        if (targetChanged && targetUid != null && seekerComponent.RetargetInterval > 0f)
+            seekerComponent.RetargetAccumulator = seekerComponent.RetargetInterval;
+    }
+
+    private void ClearSeekerAimPoint(TargetSeekingComponent seeker)
+    {
+        seeker.TargetAimCoordinates = null;
+        seeker.AimEntity = null;
+    }
+
+    // Forge-change-start: Add a parameter for the seeker transform.
+    private void UpdateSeekerAimPoint(
+        EntityUid seekerUid,
+        TargetSeekingComponent seeker,
+        EntityUid? targetUid,
+        TransformComponent? seekerXform = null)
+    // Forge-change-end
+    {
+        if (targetUid == null)
+        {
+            ClearSeekerAimPoint(seeker);
+            return;
+        }
+
+        if (HasComp<MapGridComponent>(targetUid))
+        {
+            // Forge-change-start: Use the seeker transform instead of the seeker entity.
+            seekerXform ??= Transform(seekerUid);
+            var preference = _transform.ToMapCoordinates(seekerXform.Coordinates).Position;
+
+            if (TryResolveGridAimPoint(targetUid.Value, preference, out var aimCoords, out var aimEntity))
+            // Forge-change-end
+            {
+                seeker.TargetAimCoordinates = aimCoords;
+                seeker.AimEntity = aimEntity;
+            }
+            else
+            {
+                seeker.TargetAimCoordinates = Transform(targetUid.Value).Coordinates;
+                seeker.AimEntity = null;
+            }
+
+            return;
+        }
+
+        ClearSeekerAimPoint(seeker);
+    }
+
+    private void RefreshGridAimIfNeeded(EntityUid seekerUid, TargetSeekingComponent seeker) // Forge-change: Add a parameter for the seeker transform.
+    {
+        if (seeker.CurrentTarget is not { } gridUid || !HasComp<MapGridComponent>(gridUid))
+            return;
+
+        if (seeker.AimEntity is { } aimEntity && !TerminatingOrDeleted(aimEntity))
+            return;
+
+        UpdateSeekerAimPoint(seekerUid, seeker, gridUid); // Forge-change: Add a parameter for the seeker transform.
+    }
+
+    // Forge-change-start: New system for targeting of missles
+    /// <summary>
+    /// Picks a guidance point on a grid: gunnery console, gunnery server, shuttle console,
+    /// autonomous drone HTN core (no <see cref="DroneControlComponent"/>), then drone control server.
+    /// Among entities of the same priority, picks the one closest to <paramref name="preferenceWorldPos"/> (the seeker).
+    /// </summary>
+    private bool TryResolveGridAimPoint(
+        EntityUid gridUid,
+        Vector2 preferenceWorldPos,
+        out EntityCoordinates aimCoords,
+        out EntityUid aimEntity)
+    {
+        if (TryPickClosestOnGrid<FireControlConsoleComponent>(gridUid, preferenceWorldPos, out aimCoords, out aimEntity))
+            return true;
+
+        if (TryPickClosestOnGrid<FireControlServerComponent>(gridUid, preferenceWorldPos, out aimCoords, out aimEntity))
+            return true;
+
+        if (TryPickClosestOnGrid<ShuttleConsoleComponent>(gridUid, preferenceWorldPos, out aimCoords, out aimEntity))
+            return true;
+
+        if (TryPickClosestAutonomousDroneCore(gridUid, preferenceWorldPos, out aimCoords, out aimEntity))
+            return true;
+
+        if (TryPickClosestOnGrid<DroneControlComponent>(gridUid, preferenceWorldPos, out aimCoords, out aimEntity))
+            return true;
+
+        return false;
+    }
+
+    private bool TryPickClosestOnGrid<TComp>(
+        EntityUid gridUid,
+        Vector2 preferenceWorldPos,
+        out EntityCoordinates aimCoords,
+        out EntityUid aimEntity) where TComp : IComponent
+    // Forge-change-end
+    {
+        aimCoords = default;
+        aimEntity = default;
+
+        // Forge-change-start: Add a parameter for the preference world position.
+        var bestDistSq = float.MaxValue;
+        var found = false;
+
+        var query = EntityQueryEnumerator<TComp, TransformComponent>();
+        while (query.MoveNext(out var uid, out _, out var xform))
+        // Forge-change-end
+        {
+            if (xform.GridUid != gridUid || TerminatingOrDeleted(uid))
+                continue;
+
+            // Forge-change-start: Add a parameter for the preference world position.
+            var mapPos = _transform.ToMapCoordinates(xform.Coordinates).Position;
+            var distSq = (mapPos - preferenceWorldPos).LengthSquared();
+            if (distSq >= bestDistSq)
+                continue;
+
+            bestDistSq = distSq;
+            aimCoords = xform.Coordinates;
+            aimEntity = uid;
+            found = true;
+        }
+        return found;
+    }
+    // Forge-change-end
+
+    // Forge-change-start: New system for targeting of missles
+    /// <summary>
+    /// HTN drone core without player drone control (see <see cref="DroneControlComponent"/>).
+    /// </summary>
+    private bool TryPickClosestAutonomousDroneCore(
+        EntityUid gridUid,
+        Vector2 preferenceWorldPos,
+        out EntityCoordinates aimCoords,
+        out EntityUid aimEntity)
+    {
+        aimCoords = default;
+        aimEntity = default;
+
+        var bestDistSq = float.MaxValue;
+        var found = false;
+
+        var query = EntityQueryEnumerator<TargetSeekingTargetComponent, HTNComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out _, out _, out var xform))
+        {
+            if (xform.GridUid != gridUid || TerminatingOrDeleted(uid) || HasComp<DroneControlComponent>(uid))
+                continue;
+
+            var mapPos = _transform.ToMapCoordinates(xform.Coordinates).Position;
+            var distSq = (mapPos - preferenceWorldPos).LengthSquared();
+            if (distSq >= bestDistSq)
+                continue;
+
+            bestDistSq = distSq;
+            aimCoords = xform.Coordinates;
+            aimEntity = uid;
+            found = true;
+        }
+
+        return found;
+    }
+    // Forge-change-end
+
+    private Vector2 GetTargetWorldPosition(TargetSeekingComponent seeking, TransformComponent targetXform)
+    {
+        if (seeking.TargetAimCoordinates is { } aim)
+            return _transform.ToMapCoordinates(aim).Position;
+
+        return _transform.GetWorldPosition(targetXform);
     }
 
     /// <summary>
@@ -175,9 +354,22 @@ public sealed partial class TargetSeekingSystem : EntitySystem
                 continue;
             }
 
+            if (seekingComp.RetargetInterval > 0f)
+            {
+                seekingComp.RetargetAccumulator -= frameTime;
+                if (seekingComp.RetargetAccumulator <= 0f)
+                {
+                    seekingComp.RetargetAccumulator = seekingComp.RetargetInterval;
+                    if (seekingComp.CurrentTarget != null)
+                        SetSeekerTarget((uid, seekingComp), null, xform);
+                }
+            }
+
             // If we have a target, track it using the selected algorithm
             if (seekingComp.CurrentTarget.HasValue && !TerminatingOrDeleted(seekingComp.CurrentTarget))
             {
+                RefreshGridAimIfNeeded(uid, seekingComp); // Forge-change: Add a parameter for the seeker transform.
+
                 var target = seekingComp.CurrentTarget.Value;
                 if (!_physicsQuery.TryGetComponent(target, out var targetBody))
                     continue;
@@ -188,7 +380,7 @@ public sealed partial class TargetSeekingSystem : EntitySystem
                 switch (seekingComp.TrackingAlgorithm)
                 {
                     case TrackingMethod.Direct:
-                        wantAngle = ApplyDirectTracking((uid, xform), (target, targetXform), frameTime); break;
+                        wantAngle = ApplyDirectTracking((uid, seekingComp, xform), (target, targetXform), frameTime); break;
                     case TrackingMethod.Predictive:
                         wantAngle = ApplyPredictiveTracking((uid, seekingComp, body, xform), (target, targetBody, targetXform), frameTime); break;
                     case TrackingMethod.AdvancedPredictive:
@@ -296,7 +488,7 @@ public sealed partial class TargetSeekingSystem : EntitySystem
     public Angle ApplyPredictiveTracking(Entity<TargetSeekingComponent, PhysicsComponent, TransformComponent> ent, Entity<PhysicsComponent, TransformComponent> target, float frameTime)
     {
         // Get current positions
-        var currentTargetPosition = _transform.GetWorldPosition(target.Comp2);
+        var currentTargetPosition = GetTargetWorldPosition(ent.Comp1, target.Comp2);
         var sourcePosition = _transform.GetWorldPosition(ent.Comp3);
 
         // Calculate current distance
@@ -335,7 +527,7 @@ public sealed partial class TargetSeekingSystem : EntitySystem
         var ownVel = _physics.GetMapLinearVelocity(ent, ent.Comp2, ent.Comp3);
         var ownPos = _transform.GetWorldPosition(ent.Comp3);
         var targetVel = _physics.GetMapLinearVelocity(target, target.Comp1, target.Comp2);
-        var targetPos = _transform.GetWorldPosition(target.Comp2);
+        var targetPos = GetTargetWorldPosition(ent.Comp1, target.Comp2);
         var relVel = targetVel - ownVel;
         var relPos = targetPos - ownPos;
 
@@ -377,10 +569,10 @@ public sealed partial class TargetSeekingSystem : EntitySystem
     /// <summary>
     /// Basic tracking that points directly at the current target position.
     /// </summary>
-    public Angle ApplyDirectTracking(Entity<TransformComponent> ent, Entity<TransformComponent> target, float frameTime)
+    public Angle ApplyDirectTracking(Entity<TargetSeekingComponent, TransformComponent> ent, Entity<TransformComponent> target, float frameTime)
     {
         // Get the angle directly toward the target
-        var angleToTarget = (_transform.GetWorldPosition(target.Comp) - _transform.GetWorldPosition(ent.Comp)).ToWorldAngle();
+        var angleToTarget = (GetTargetWorldPosition(ent.Comp1, target.Comp) - _transform.GetWorldPosition(ent.Comp2)).ToWorldAngle();
 
         return angleToTarget;
     }
