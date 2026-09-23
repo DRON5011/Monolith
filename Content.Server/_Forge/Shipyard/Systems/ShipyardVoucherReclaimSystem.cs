@@ -59,6 +59,16 @@ public sealed class ShipyardVoucherReclaimSystem : EntitySystem
             existing.MaterialComposition.Clear();
     }
 
+    /// <summary>
+    /// Drops the composition staged at the start of a recycle so an interrupted cycle
+    /// neither pays out nor leaves the voucher marked for a full refund.
+    /// </summary>
+    public void CancelStagedReclaim(EntityUid uid)
+    {
+        RemComp<ShipyardVoucherFullReclaimComponent>(uid);
+        RemComp<PhysicalCompositionComponent>(uid);
+    }
+
     public bool CanReclaim(EntityUid uid, ShipyardVoucherComponent component)
         => QualifiesForFullMaterialReclaim(uid, component);
 

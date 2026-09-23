@@ -3,6 +3,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Ghost;
 using Content.Server.Popups;
+using Content.Server._Forge.Shipyard.Systems; // Forge-change
 using Content.Shared._Forge.Shipyard.Components; // Forge-change
 using Content.Shared._NF.Whitelist.Components; // Forge-change
 using Content.Shared.Repairable;
@@ -45,6 +46,7 @@ public sealed partial class MaterialReclaimerSystem : SharedMaterialReclaimerSys
     [Dependency] private StackSystem _stack = default!;
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private ShipyardVoucherReclaimSystem _voucherReclaim = default!; // Forge-change
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -146,8 +148,37 @@ public sealed partial class MaterialReclaimerSystem : SharedMaterialReclaimerSys
 
     private void OnActivePowerChanged(Entity<ActiveMaterialReclaimerComponent> entity, ref PowerChangedEvent args)
     {
-        if (!args.Powered)
+        if (args.Powered)
+            return;
+
+        // A finished timer still pays out. An earlier cut must not run the partial-completion
+        // formula: that deletes a voucher and, in the first half of the cycle, returns nothing.
+        if (Timing.CurTime >= entity.Comp.EndTime || !TryAbortVoucherReclaim(entity))
             TryFinishProcessItem(entity, null, entity.Comp);
+    }
+
+    /// <summary>
+    /// Forge-change: power loss ejects a shipyard voucher and clears the composition staged at insert time.
+    /// </summary>
+    private bool TryAbortVoucherReclaim(Entity<ActiveMaterialReclaimerComponent> entity)
+    {
+        if (entity.Comp.ReclaimingContainer?.ContainedEntities.FirstOrNull() is not { } item)
+            return false;
+
+        if (!HasComp<NFShipyardVoucherComponent>(item))
+            return false;
+
+        if (!Container.Remove(item, entity.Comp.ReclaimingContainer, force: true))
+            return false;
+
+        _voucherReclaim.CancelStagedReclaim(item);
+        RemCompDeferred<ActiveMaterialReclaimerComponent>(entity.Owner);
+
+        if (TryComp<MaterialReclaimerComponent>(entity.Owner, out var reclaimer))
+            _audio.Stop(reclaimer.Stream);
+
+        _popup.PopupEntity(Loc.GetString("shipyard-voucher-reclaim-interrupted"), entity.Owner);
+        return true;
     }
 
     private void OnBreakage(Entity<MaterialReclaimerComponent> ent, ref BreakageEventArgs args)
