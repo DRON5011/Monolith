@@ -1,14 +1,14 @@
 using System.Numerics;
-using Content.Server._Mono.FireControl;
-using Content.Server.NPC.HTN;
+using Content.Server._Mono.FireControl; // Forge-change
+using Content.Server.NPC.HTN; // Forge-change
 using Content.Server.Shuttles.Components; // Forge-change
 using Content.Shared._Crescent.DroneControl; // Forge-change
 using Content.Shared.Interaction;
 using Content.Shared.Projectiles;
-using Content.Shared._Mono.FireControl;
+using Content.Shared._Mono.FireControl; // Forge-change
 using Robust.Server.GameObjects;
-using Robust.Shared.Map;
-using Robust.Shared.Map.Components;
+using Robust.Shared.Map; // Forge-change
+using Robust.Shared.Map.Components; // Forge-change
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -91,10 +91,10 @@ public sealed partial class TargetSeekingSystem : EntitySystem
     {
         var (_, seekerComponent) = seekerEntity;
 
-        var targetChanged = seekerComponent.CurrentTarget != targetUid;
+        var targetChanged = seekerComponent.CurrentTarget != targetUid; // Forge-change: Add a parameter for the seeker transform.
 
         // if the new target is different from the old target,
-        if (targetChanged)
+        if (targetChanged) // Forge-change
         {
             // and we had an old target, then raise changing-seeking
             if (seekerComponent.CurrentTarget is { } oldTargetUid)
@@ -106,7 +106,8 @@ public sealed partial class TargetSeekingSystem : EntitySystem
         }
 
         seekerComponent.CurrentTarget = targetUid;
-        UpdateSeekerAimPoint(seekerEntity.Owner, seekerComponent, targetUid, seekerTransform); // Forge-change: Add a parameter for the seeker transform.
+        // Forge-change-start
+        UpdateSeekerAimPoint(seekerEntity.Owner, seekerComponent, targetUid, seekerTransform);
 
         if (targetChanged && targetUid != null && seekerComponent.RetargetInterval > 0f)
             seekerComponent.RetargetAccumulator = seekerComponent.RetargetInterval;
@@ -117,14 +118,14 @@ public sealed partial class TargetSeekingSystem : EntitySystem
         seeker.TargetAimCoordinates = null;
         seeker.AimEntity = null;
     }
+    // Forge-change-end
 
-    // Forge-change-start: Add a parameter for the seeker transform.
+    // Forge-change-start: New system for targeting of missles
     private void UpdateSeekerAimPoint(
         EntityUid seekerUid,
         TargetSeekingComponent seeker,
         EntityUid? targetUid,
         TransformComponent? seekerXform = null)
-    // Forge-change-end
     {
         if (targetUid == null)
         {
@@ -134,12 +135,10 @@ public sealed partial class TargetSeekingSystem : EntitySystem
 
         if (HasComp<MapGridComponent>(targetUid))
         {
-            // Forge-change-start: Use the seeker transform instead of the seeker entity.
             seekerXform ??= Transform(seekerUid);
             var preference = _transform.ToMapCoordinates(seekerXform.Coordinates).Position;
 
             if (TryResolveGridAimPoint(targetUid.Value, preference, out var aimCoords, out var aimEntity))
-            // Forge-change-end
             {
                 seeker.TargetAimCoordinates = aimCoords;
                 seeker.AimEntity = aimEntity;
@@ -167,7 +166,6 @@ public sealed partial class TargetSeekingSystem : EntitySystem
         UpdateSeekerAimPoint(seekerUid, seeker, gridUid); // Forge-change: Add a parameter for the seeker transform.
     }
 
-    // Forge-change-start: New system for targeting of missles
     /// <summary>
     /// Picks a guidance point on a grid: gunnery console, gunnery server, shuttle console,
     /// autonomous drone HTN core (no <see cref="DroneControlComponent"/>), then drone control server.
@@ -202,23 +200,19 @@ public sealed partial class TargetSeekingSystem : EntitySystem
         Vector2 preferenceWorldPos,
         out EntityCoordinates aimCoords,
         out EntityUid aimEntity) where TComp : IComponent
-    // Forge-change-end
     {
         aimCoords = default;
         aimEntity = default;
 
-        // Forge-change-start: Add a parameter for the preference world position.
         var bestDistSq = float.MaxValue;
         var found = false;
 
         var query = EntityQueryEnumerator<TComp, TransformComponent>();
         while (query.MoveNext(out var uid, out _, out var xform))
-        // Forge-change-end
         {
             if (xform.GridUid != gridUid || TerminatingOrDeleted(uid))
                 continue;
 
-            // Forge-change-start: Add a parameter for the preference world position.
             var mapPos = _transform.ToMapCoordinates(xform.Coordinates).Position;
             var distSq = (mapPos - preferenceWorldPos).LengthSquared();
             if (distSq >= bestDistSq)
@@ -231,9 +225,7 @@ public sealed partial class TargetSeekingSystem : EntitySystem
         }
         return found;
     }
-    // Forge-change-end
 
-    // Forge-change-start: New system for targeting of missles
     /// <summary>
     /// HTN drone core without player drone control (see <see cref="DroneControlComponent"/>).
     /// </summary>
@@ -268,7 +260,6 @@ public sealed partial class TargetSeekingSystem : EntitySystem
 
         return found;
     }
-    // Forge-change-end
 
     private Vector2 GetTargetWorldPosition(TargetSeekingComponent seeking, TransformComponent targetXform)
     {
@@ -277,6 +268,7 @@ public sealed partial class TargetSeekingSystem : EntitySystem
 
         return _transform.GetWorldPosition(targetXform);
     }
+    // Forge-change-end
 
     /// <summary>
     /// Called when a target-seeking projectile hits something.
@@ -354,6 +346,7 @@ public sealed partial class TargetSeekingSystem : EntitySystem
                 continue;
             }
 
+            // Forge-change-start: Retargeting of missles
             if (seekingComp.RetargetInterval > 0f)
             {
                 seekingComp.RetargetAccumulator -= frameTime;
@@ -364,11 +357,12 @@ public sealed partial class TargetSeekingSystem : EntitySystem
                         SetSeekerTarget((uid, seekingComp), null, xform);
                 }
             }
+            // Forge-change-end
 
             // If we have a target, track it using the selected algorithm
             if (seekingComp.CurrentTarget.HasValue && !TerminatingOrDeleted(seekingComp.CurrentTarget))
             {
-                RefreshGridAimIfNeeded(uid, seekingComp); // Forge-change: Add a parameter for the seeker transform.
+                RefreshGridAimIfNeeded(uid, seekingComp); // Forge-change: Retargeting of missles
 
                 var target = seekingComp.CurrentTarget.Value;
                 if (!_physicsQuery.TryGetComponent(target, out var targetBody))
@@ -380,7 +374,7 @@ public sealed partial class TargetSeekingSystem : EntitySystem
                 switch (seekingComp.TrackingAlgorithm)
                 {
                     case TrackingMethod.Direct:
-                        wantAngle = ApplyDirectTracking((uid, seekingComp, xform), (target, targetXform), frameTime); break;
+                        wantAngle = ApplyDirectTracking((uid, seekingComp, xform), (target, targetXform), frameTime); break; // Forge-change
                     case TrackingMethod.Predictive:
                         wantAngle = ApplyPredictiveTracking((uid, seekingComp, body, xform), (target, targetBody, targetXform), frameTime); break;
                     case TrackingMethod.AdvancedPredictive:
@@ -488,7 +482,7 @@ public sealed partial class TargetSeekingSystem : EntitySystem
     public Angle ApplyPredictiveTracking(Entity<TargetSeekingComponent, PhysicsComponent, TransformComponent> ent, Entity<PhysicsComponent, TransformComponent> target, float frameTime)
     {
         // Get current positions
-        var currentTargetPosition = GetTargetWorldPosition(ent.Comp1, target.Comp2);
+        var currentTargetPosition = GetTargetWorldPosition(ent.Comp1, target.Comp2); // Forge-change: New system for targeting of missles
         var sourcePosition = _transform.GetWorldPosition(ent.Comp3);
 
         // Calculate current distance
@@ -527,7 +521,7 @@ public sealed partial class TargetSeekingSystem : EntitySystem
         var ownVel = _physics.GetMapLinearVelocity(ent, ent.Comp2, ent.Comp3);
         var ownPos = _transform.GetWorldPosition(ent.Comp3);
         var targetVel = _physics.GetMapLinearVelocity(target, target.Comp1, target.Comp2);
-        var targetPos = GetTargetWorldPosition(ent.Comp1, target.Comp2);
+        var targetPos = GetTargetWorldPosition(ent.Comp1, target.Comp2); // Forge-change: New system for targeting of missles
         var relVel = targetVel - ownVel;
         var relPos = targetPos - ownPos;
 
@@ -569,10 +563,10 @@ public sealed partial class TargetSeekingSystem : EntitySystem
     /// <summary>
     /// Basic tracking that points directly at the current target position.
     /// </summary>
-    public Angle ApplyDirectTracking(Entity<TargetSeekingComponent, TransformComponent> ent, Entity<TransformComponent> target, float frameTime)
+    public Angle ApplyDirectTracking(Entity<TargetSeekingComponent, TransformComponent> ent, Entity<TransformComponent> target, float frameTime) // Forge-change: New system for targeting of missles
     {
         // Get the angle directly toward the target
-        var angleToTarget = (GetTargetWorldPosition(ent.Comp1, target.Comp) - _transform.GetWorldPosition(ent.Comp2)).ToWorldAngle();
+        var angleToTarget = (GetTargetWorldPosition(ent.Comp1, target.Comp) - _transform.GetWorldPosition(ent.Comp2)).ToWorldAngle(); // Forge-change: New system for targeting of missles
 
         return angleToTarget;
     }
