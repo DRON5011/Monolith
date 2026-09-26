@@ -30,6 +30,8 @@
   - type: Sprite
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/nexus_t1_mil_hardsuit.rsi
     state: icon
+  - type: Item
+    size: Huge
   - type: Clothing
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/nexus_t1_mil_hardsuit.rsi
     clothingVisuals:

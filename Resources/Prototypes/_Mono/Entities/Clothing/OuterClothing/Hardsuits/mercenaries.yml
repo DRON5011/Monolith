@@ -8,6 +8,8 @@
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/merc_warlordsuit.rsi
   - type: Clothing
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/merc_warlordsuit.rsi
+  - type: Item # Forge-change
+    size: Huge # Forge-change
   - type: PressureProtection
     highPressureMultiplier: 0.5
     lowPressureMultiplier: 1000

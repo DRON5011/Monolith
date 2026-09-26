@@ -10,6 +10,8 @@
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/ui_med_hardsuit.rsi
   - type: Clothing
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/ui_med_hardsuit.rsi
+  - type: Item
+    size: Huge
   - type: ExplosionResistance
     damageCoefficient: 0.6
   - type: Armor
@@ -60,8 +62,6 @@
   components:
   - type: Sprite
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/ui_light_juggernaut_outer.rsi
-  - type: Item
-    size: Huge
   - type: Clothing
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/ui_light_juggernaut_outer.rsi
   - type: PressureProtection

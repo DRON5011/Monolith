@@ -6,8 +6,8 @@
   components:
   - type: Sprite
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/viper_group_standard.rsi
-  - type: Item
-    size: Huge
+  #- type: Item # Forge-change
+  #  size: Huge # Forge-change
   - type: Clothing
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/viper_group_standard.rsi
   - type: PressureProtection
@@ -147,8 +147,8 @@
   components:
   - type: Sprite
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/viper_group_initiate.rsi
-  - type: Item
-    size: Huge
+  #- type: Item # Forge-change
+  #  size: Huge # Forge-change
   - type: Clothing
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/viper_group_initiate.rsi
   - type: PressureProtection

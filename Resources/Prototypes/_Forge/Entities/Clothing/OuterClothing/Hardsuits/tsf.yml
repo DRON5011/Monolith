@@ -89,8 +89,6 @@
   components:
   - type: Sprite
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/tsf_mid.rsi
-  - type: Item
-    size: Huge
   - type: Clothing
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/tsf_mid.rsi
   - type: PressureProtection
@@ -135,8 +133,6 @@
   components:
   - type: Sprite
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/tsf_high.rsi
-  - type: Item
-    size: Huge
   - type: Clothing
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/tsf_high.rsi
   - type: PressureProtection
@@ -292,8 +288,6 @@
   components:
   - type: Sprite
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/tsf_stealth_mark1.rsi
-  - type: Item
-    size: Huge
   - type: Clothing
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/tsf_stealth_mark1.rsi
   - type: PressureProtection
@@ -339,8 +333,6 @@
   components:
   - type: Sprite
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/tsf_zazhiganie.rsi
-  - type: Item
-    size: Huge
   - type: Clothing
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/tsf_zazhiganie.rsi
   - type: PressureProtection
@@ -395,6 +387,8 @@
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/tsf_medic.rsi
   - type: Clothing
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/tsf_medic.rsi
+  - type: Item
+    size: Huge
   - type: PressureProtection
     highPressureMultiplier: 0.05
     lowPressureMultiplier: 1000
@@ -436,8 +430,6 @@
   components:
   - type: Sprite
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/tsf_porshen.rsi
-  - type: Item
-    size: Huge
   - type: Clothing
     sprite: _Forge/Clothing/OuterClothing/Hardsuits/tsf_porshen.rsi
   - type: PressureProtection

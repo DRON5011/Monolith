@@ -108,6 +108,8 @@
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/ullman_industries_engineer.rsi # Ullman sprites
   - type: Clothing
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/ullman_industries_engineer.rsi #Ullman sprites
+  - type: Item # Forge-change
+    size: Huge # Forge-change
   - type: PressureProtection
     highPressureMultiplier: 0.5
     lowPressureMultiplier: 1000
@@ -147,6 +149,8 @@
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/ullman_industries_pilot.rsi
   - type: Clothing
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/ullman_industries_pilot.rsi
+  - type: Item # Forge-change
+    size: Huge # Forge-change
   - type: PressureProtection
     highPressureMultiplier: 0.5
     lowPressureMultiplier: 1000

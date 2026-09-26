@@ -312,6 +312,8 @@
     sprite: Clothing/OuterClothing/Hardsuits/security.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Hardsuits/security.rsi
+  - type: Item # Forge-change
+    size: Huge # Forge-change
   - type: PressureProtection
     highPressureMultiplier: 0.5
     lowPressureMultiplier: 1000
@@ -352,6 +354,8 @@
     sprite: Clothing/OuterClothing/Hardsuits/brigmedic.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Hardsuits/brigmedic.rsi
+  - type: Item # Forge-change
+    size: Huge # Forge-change
   - type: PressureProtection
     highPressureMultiplier: 0.06
     lowPressureMultiplier: 1000
@@ -1210,6 +1214,8 @@
     sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertmedical.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Hardsuits/ERTSuits/ertmedical.rsi
+  - type: Item # Forge-change
+    size: Huge # Forge-change
   - type: PressureProtection # Forge start
     highPressureMultiplier: 0.05
     lowPressureMultiplier: 1000

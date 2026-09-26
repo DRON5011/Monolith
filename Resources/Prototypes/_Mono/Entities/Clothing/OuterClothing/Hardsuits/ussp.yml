@@ -6,8 +6,8 @@
   components:
   - type: Sprite
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/ussp_combat.rsi
-  - type: Item
-    size: Huge
+  #- type: Item # Forge-change
+  #  size: Huge # Forge-change
   - type: Clothing
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/ussp_combat.rsi
   - type: PressureProtection
@@ -225,8 +225,8 @@
   components:
   - type: Sprite
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/ussp_officer_combat.rsi
-  - type: Item
-    size: Huge
+  #- type: Item # Forge-change
+  #  size: Huge # Forge-change
   - type: Clothing
     sprite: _Mono/Clothing/OuterClothing/Hardsuits/ussp_officer_combat.rsi
   - type: PressureProtection
