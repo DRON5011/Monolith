@@ -787,7 +787,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.2
   - type: FireProtection
-    reduction: 0.8
+    reduction: 0.1 # Forge-change 0.8->0.1
   - type: Armor # Mono - Armor Value Changes
     modifiers:
       coefficients:
@@ -883,6 +883,8 @@
   - type: TemperatureProtection # Mono: Not fully insulated
     heatingCoefficient: 0.01
     coolingCoefficient: 0.01
+  - type: FireProtection # Forge-change
+    reduction: 0.7 # Forge-change
   - type: Armor
     modifiers:
       coefficients:
@@ -1149,7 +1151,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.325 # Forge-change 0.2 -> 0.325
   - type: FireProtection
-    reduction: 0.8 # Forge end
+    reduction: 0.7 # Forge end
   - type: ToggleableClothing # Goobstation - Modsuits change - Mono - this is a solution for helmet attachment/cover to not fit on hardsuits
     requiredSlot: outerclothing
     blockUnequipWhenAttached: false
@@ -1400,18 +1402,18 @@
   - type: ExplosionResistance
     damageCoefficient: 0.25 # Forge-change 0.7 -> 0.25
   - type: FireProtection # Forge-change
-    reduction: 0.2
+    reduction: 0.8 # Forge-change 0.2->0.8
   - type: Armor
     modifiers:
       coefficients:
         Blunt: 0.525 # Forge-change 0.7 -> 0.525
         Slash: 0.525 # Forge-change 0.5 -> 0.525
         Piercing: 0.475 # Forge-change 0.6 -> 0.475
-        Heat: 0.35 # Forge-change 0.3 -> 0.35
-        Cold: 0.3
-        Shock: 0.3
+        Heat: 0.375 # Forge-change 0.3 -> 0.375
+        #Cold: 0.3 # Forge-change
+        #Shock: 0.3 # Forge-change
         Radiation: 0.15 # Forge-change 0.1 -> 0.15
-        Caustic: 0
+        Caustic: 0.25 # Forge-change 0 -> 0.25
   - type: ClothingSpeedModifier 
     walkModifier: 0.965 # Forge-change 1.0 -> 0.965
     sprintModifier: 0.965 # Forge-change 0.9 -> 0.965
