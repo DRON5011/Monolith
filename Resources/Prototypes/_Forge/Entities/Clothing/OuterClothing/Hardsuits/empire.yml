@@ -231,7 +231,7 @@
         Slash: 0.4
         Piercing: 0.3
         Heat: 0.4
-        Shock: 0.75
+        Shock: 0.8
         Radiation: 0.4
         Caustic: 0.5
   - type: StaminaDamageResistance
@@ -297,7 +297,7 @@
         Slash: 0.4
         Piercing: 0.3
         Heat: 0.4
-        Shock: 0.75
+        Shock: 0.8
         Radiation: 0.3
         Caustic: 0.7
   - type: StaminaDamageResistance
@@ -335,7 +335,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.2
   - type: FireProtection
-    reduction: 0.7
+    reduction: 0.85
   - type: Armor
     modifiers:
       coefficients:
@@ -343,7 +343,7 @@
         Slash: 0.35
         Piercing: 0.225
         Heat: 0.375
-        Shock: 0.75
+        Shock: 0.6
         Radiation: 0.15
         Caustic: 0.6
   - type: StaminaDamageResistance
@@ -382,7 +382,7 @@
         Slash: 0.375
         Piercing: 0.225
         Heat: 0.35
-        Shock: 0.75
+        Shock: 0.6
         Radiation: 0.1
         Caustic: 0.6
   - type: ClothingSpeedModifier
@@ -435,7 +435,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.2
   - type: FireProtection
-    reduction: 0.8
+    reduction: 0.1
   - type: Armor
     modifiers:
       coefficients:
@@ -445,7 +445,7 @@
         Shock: 0.75
         Heat: 0.4
         Radiation: 0.1
-        Caustic: 0.8
+        Caustic: 0.4
   - type: StaminaDamageResistance
     coefficient: 0.5
   - type: ClothingSpeedModifier
@@ -564,7 +564,7 @@
         Slash: 0.55
         Piercing: 0.5
         Heat: 0.55
-        Shock: 0.9
+        Shock: 0.8
         Radiation: 0.55
         Caustic: 0.8
   - type: StaminaDamageResistance
