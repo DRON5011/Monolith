@@ -342,7 +342,7 @@
   - ContractorClothingOuterHardsuitEVA
   - ContractorClothingOuterHardsuitBasic
   - ContractorClothingOuterHardsuitVoidParamed
-  - ContractorClothingOuterHardsuitUIEngineer
+  #- ContractorClothingOuterHardsuitUIEngineer # Forge-change remove UI engineer hardsuit
   - ContractorClothingOuterHardsuitUIPilot
   - ContractorClothingOuterHardsuitUsspL10A # Forge-change
   ## Mono start
