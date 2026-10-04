@@ -23,7 +23,7 @@
   productEntity: ClothingBackpackDuffelTraumaFilledBulldog
   icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/bulldog.rsi, state: icon }
   cost:
-    TTIMedicalCredit: 70
+    TTIMedicalCredit: 55
   categories:
     - UplinkTTIWeapons
   conditions:
@@ -41,7 +41,61 @@
   productEntity: ClothingBackpackDuffelTraumaFilledMla73
   icon: { entity: WeaponSubMachineGunMla73Registered }
   cost:
-    TTIMedicalCredit: 55
+    TTIMedicalCredit: 65
+  categories:
+    - UplinkTTIWeapons
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - FactionStaticUplinkTTI
+    - !type:ListingLimitedStockCondition
+      stock: 3
+
+- type: listing
+  id: UplinkTTIPulseRifle
+  name: ent-WeaponPulseRifle
+  description: ent-WeaponPulseRifle.desc
+  productEntity: WeaponPulseRifle
+  icon: { entity: WeaponPulseRifle }
+  cost:
+    TTIMedicalCredit: 140
+  categories:
+    - UplinkTTIWeapons
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - FactionStaticUplinkTTI
+    - !type:ListingLimitedStockCondition
+      stock: 3
+
+- type: listing
+  id: UplinkTTIPulsePistol
+  name: ent-WeaponPulsePistol
+  description: ent-WeaponPulsePistol.desc
+  productEntity: WeaponPulsePistol
+  icon: { entity: WeaponPulsePistol }
+  cost:
+    TTIMedicalCredit: 80
+  categories:
+    - UplinkTTIWeapons
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - FactionStaticUplinkTTI
+    - !type:ListingLimitedStockCondition
+      stock: 5
+
+- type: listing
+  id: UplinkTTIPulseRifle
+  name: ent-WeaponRifleNtsfLtr
+  description: ent-WeaponRifleNtsfLtr.desc
+  productEntity: WeaponRifleNtsfLtr
+  icon: { entity: WeaponRifleNtsfLtr }
+  cost:
+    TTIMedicalCredit: 100
   categories:
     - UplinkTTIWeapons
   conditions:
