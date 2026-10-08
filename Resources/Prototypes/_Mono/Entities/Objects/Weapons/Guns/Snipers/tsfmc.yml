@@ -81,9 +81,11 @@
     maxOffset: 7
     pvsIncrease: 0.7
   - type: GunRequiresWield
-  - type: LaserPointer
-    targetedColor: "#03c2fc"
-    defaultColor: "#03c2fc"
+  # Forge-change-start
+  #- type: LaserPointer
+  #  targetedColor: "#03c2fc"
+  #  defaultColor: "#03c2fc"
+  # Forge-change-end
 
 - type: entity
   name: VFD QBU-243 Xian DMR (8x65mm SKR)

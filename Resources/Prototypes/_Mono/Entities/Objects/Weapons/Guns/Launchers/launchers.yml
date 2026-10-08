@@ -277,6 +277,8 @@
     sprintModifier: 0.5
   - type: PirateBountyItem
     id: ExperimentalFactionWeapon
-  - type: LaserPointer
-    targetedColor: "#ff0037"
-    defaultColor: "#03c2fc"
+  # Forge-change-start
+  #- type: LaserPointer
+  #  targetedColor: "#ff0037"
+  #  defaultColor: "#03c2fc"
+  # Forge-change-end
