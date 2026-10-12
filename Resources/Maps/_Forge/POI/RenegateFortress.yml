@@ -31864,7 +31864,7 @@ entities:
           - 2872
           showEnts: False
           occludes: True
-- proto: SuitStoragecriii200
+- proto: SuitStoragebsii20
   entities:
   - uid: 4577
     components:
