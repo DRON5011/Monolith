@@ -23545,3 +23545,12 @@ Entries:
   id: 2591
   time: '2026-10-16T19:35:07.0000000+00:00'
   url: https://github.com/Forge-Station/Monolith/pull/526
+- author: teasum
+  changes:
+    - type: Fix
+      message: добавил потерянную категорию скафам нексуса
+    - type: Fix
+      message: пофиксил бесконечную ампутацию у автодока и возможно что то еще
+  id: 2592
+  time: '2026-10-16T19:36:32.0000000+00:00'
+  url: https://github.com/Forge-Station/Monolith/pull/492
