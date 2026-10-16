@@ -49,3 +49,17 @@ Entries:
   id: 4
   time: '2026-10-16T22:44:32.0000000+00:00'
   url: https://github.com/Forge-Station/Monolith/pull/532
+- author: Fallen-Seraphim
+  changes:
+    - type: Add
+      message: >-
+        Добавлен Нейротоксин кобры, жидкий и газообразный N-611, N-611-P, A-517
+        и V-903. (Нейро-паралитические газы/препараты в жидком и газообразном
+        виде)
+    - type: Tweak
+      message: >-
+        Кобра не наносит урон ядами, только механический и нейротоксин в вашу
+        кровь.
+  id: 5
+  time: '2026-10-16T23:18:35.0000000+00:00'
+  url: https://github.com/Forge-Station/Monolith/pull/517
