@@ -23525,3 +23525,10 @@ Entries:
   id: 2589
   time: '2026-10-16T19:10:52.0000000+00:00'
   url: https://github.com/Forge-Station/Monolith/pull/525
+- author: KoT-Corvax
+  changes:
+    - type: Fix
+      message: Спрайт материи УРК в руке отображается пральна!
+  id: 2590
+  time: '2026-10-16T19:16:31.0000000+00:00'
+  url: https://github.com/Forge-Station/Monolith/pull/530
