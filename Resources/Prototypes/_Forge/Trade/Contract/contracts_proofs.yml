@@ -42,7 +42,6 @@
   components:
   - type: Item
     size: Normal
-  - type: DroneSalvageKeep
   - type: Sprite
     sprite: _Mono/Mobs/Core/drone.rsi
     layers:
