@@ -63,3 +63,12 @@ Entries:
   id: 5
   time: '2026-10-16T23:18:35.0000000+00:00'
   url: https://github.com/Forge-Station/Monolith/pull/517
+- author: mersen-tyn
+  changes:
+    - type: Fix
+      message: >-
+        подправил вылеты от столкновений шаттлов, теперь должно работать
+        корректно и правильно (ну если что - пингуйте меня, вооот-с)
+  id: 6
+  time: '2026-10-17T22:28:07.0000000+00:00'
+  url: https://github.com/Forge-Station/Monolith/pull/536
