@@ -87,3 +87,10 @@ Entries:
   id: 7
   time: '2026-10-18T18:25:28.0000000+00:00'
   url: https://github.com/Forge-Station/Monolith/pull/537
+- author: KoT-Corvax
+  changes:
+    - type: Fix
+      message: Поправлены допущенные опечатки в гайдбуках.
+  id: 8
+  time: '2026-10-18T18:26:35.0000000+00:00'
+  url: https://github.com/Forge-Station/Monolith/pull/539
