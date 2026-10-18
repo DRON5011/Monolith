@@ -94,3 +94,10 @@ Entries:
   id: 8
   time: '2026-10-18T18:26:35.0000000+00:00'
   url: https://github.com/Forge-Station/Monolith/pull/539
+- author: vsixst
+  changes:
+    - type: Fix
+      message: Дворф больше не может опьянеть, ведь дворф и есть пьянство.
+  id: 9
+  time: '2026-10-18T21:38:34.0000000+00:00'
+  url: https://github.com/Forge-Station/Monolith/pull/538
